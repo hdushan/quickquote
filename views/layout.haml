@@ -2,11 +2,14 @@
 %html
   %head
     %title SydneyTesters QuickQuote
+    %link(rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" media="screen, projection")
     %link(rel="stylesheet" href="css/bootstrap.min.css")
+    %script(src="http://code.jquery.com/jquery-1.8.2.min.js")
+    %script(src="http://code.jquery.com/ui/1.9.0/jquery-ui.js")
   %body
     #wrapper
       #header
         %h1 SydneyTesters Life Insurance
-	
+
       #content
         =yield

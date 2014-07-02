@@ -1,33 +1,35 @@
-.panel.panel-default
-  .panel-body
-	
-    %form{:class => "form-horizontal", :role => "form", :action => "/quote", :method => "post"}
-      %fieldset
-    
-      %legend Quick Quote
-    
-      .form-group
-        %label{:class => "col-md-4 control-label", :for => "textinput"}Age  
-        .col-md-4
-          %input{:id => "textinput", :name => "textinput", :type => "text", :placeholder => "Enter your age", :class => "form-control input-md"}
-    
-      .form-group
-        %label{:class => "col-md-4 control-label", :for => "radios"}Gender
-        .col-md-4 
-          %label{:class => "radio-inline", :for => "radios-0"}Male
-          %input{:type => "radio", :name => "radios", :id => "radios-0", :value => "Male", :checked => "checked"}
-          %label{:class => "radio-inline", :for => "radios-1"}Female
-          %input{:type => "radio", :name => "radios", :id => "radios-1", :value => "Female"}
-    
-      .form-group
-        %label{:class => "col-md-4 control-label", :for => "selectbasic"}Occupation Category
-        .col-md-4 
-          %select{:id => "selectbasic", :name => "selectbasic", :class => "form-control"}
-            %option{:value => "risk0"}Low risk occupation
-            %option{:value => "risk1"}Medium risk occupation
-            %option{:value => "risk2"}High risk occupation
-            %option{:value => "risk3"}Very high risk occupation
-    
-      .form-group
-        .col-md-4
-          %button{:id => "singlebutton", :type => "submit", :name => "singlebutton", :class => "btn btn-primary btn-lg"}Get Quote
+.container
+  #quotebox{:style => "margin-top:50px;", :class => "mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}                    
+    .panel.panel-info
+      .panel-heading
+        %h3{:class => "panel-title"}Quick Quote
+      .panel-body{:style => "padding-top:30px"}
+    	
+        %form{:class => "form-horizontal", :role => "form", :action => "/quote", :method => "post"}
+          %fieldset
+          .form-group{:style => "margin-bottom: 25px"}
+            %label{:class => "col-md-4 control-label", :for => "textinput"}Age  
+            .col-md-4
+              %input{:id => "textinput", :name => "textinput", :type => "text", :placeholder => "Enter your age", :class => "form-control input-md"}
+        
+          .form-group{:style => "margin-bottom: 25px"}
+            %label{:class => "col-md-4 control-label", :for => "radios"}Gender
+            .col-md-4 
+              %label{:class => "radio-inline", :for => "radios-0"}Male
+              %input{:type => "radio", :name => "radios", :id => "radios-0", :value => "Male", :checked => "checked"}
+              %label{:class => "radio-inline", :for => "radios-1"}Female
+              %input{:type => "radio", :name => "radios", :id => "radios-1", :value => "Female"}
+        
+          .form-group
+            %label{:class => "col-md-4 control-label", :for => "selectbasic"}Occupation Category
+            .col-md-4 
+              %select{:id => "selectbasic", :name => "selectbasic", :class => "form-control"}
+                %option{:value => "risk0"}Low risk occupation
+                %option{:value => "risk1"}Medium risk occupation
+                %option{:value => "risk2"}High risk occupation
+                %option{:value => "risk3"}Very high risk occupation
+        
+          .form-group
+            .col-md-4
+            .col-md-4
+              %button{:id => "singlebutton", :type => "submit", :name => "singlebutton", :class => "btn btn-primary btn-lg btn-block"}Get Quote
