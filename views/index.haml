@@ -12,7 +12,7 @@
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "textinput"}Age  
             .col-md-4
-              %input{:id => "age", :name => "age", :type => "text", :placeholder => "Enter your age", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The age is required", "pattern" => "[1-9]+", "data-bv-regexp-message" => "The age has to be a number bigger than zero"}
+              %input{:id => "age", :name => "age", :type => "number", :placeholder => "Enter your age", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The age is required", "data-bv-integer-message" => "The age has to be a number bigger than zero"}
         
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "radios"}Gender
@@ -45,4 +45,4 @@
           .form-group
             .col-md-4
             .col-md-4
-              %button{:id => "singlebutton", :type => "submit", :name => "submit", :class => "btn btn-primary btn-lg btn-block"}Get Quote
+              %button{:id => "singlebutton", :type => "submit", :id => "getquote", :name => "getquote", :class => "btn btn-primary btn-lg btn-block"}Get Quote
