@@ -1,1 +1,3 @@
-alert 'Hello!'
+$(document).ready ->
+  $("#quoteform").bootstrapValidator()
+  return

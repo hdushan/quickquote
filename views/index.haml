@@ -5,31 +5,44 @@
         %h3{:class => "panel-title"}Syeney Testers Life Insurance
       .panel-body{:style => "padding-top:30px"}
     	
-        %form{:class => "form-horizontal", :role => "form", :action => "/quote", :method => "post"}
+        %form{:id => "quoteform", :class => "form-horizontal", :role => "form", :action => "/quote", :method => "post", "data-bv-feedbackicons-valid" => "glyphicon glyphicon-ok", "data-bv-feedbackicons-invalid" => "glyphicon glyphicon-remove", "data-bv-feedbackicons-validating" => "glyphicon glyphicon-refresh", "data-bv-submitbuttons" => 'button[type="submit"]', "data-bv-live" => "enabled"}
+		
           %fieldset
+		  
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "textinput"}Age  
             .col-md-4
-              %input{:id => "textinput", :name => "textinput", :type => "text", :placeholder => "Enter your age", :class => "form-control input-md"}
+              %input{:id => "age", :name => "age", :type => "text", :placeholder => "Enter your age", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The age is required", "pattern" => "[1-9]+", "data-bv-regexp-message" => "The age has to be a number bigger than zero"}
         
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "radios"}Gender
             .col-md-4 
               %label{:class => "radio-inline", :for => "radios-0"}Male
-              %input{:type => "radio", :name => "radios", :id => "radios-0", :value => "Male", :checked => "checked"}
+              %input{:type => "radio", :name => "gender", :id => "gendermale", :value => "Male", :checked => "checked"}
               %label{:class => "radio-inline", :for => "radios-1"}Female
-              %input{:type => "radio", :name => "radios", :id => "radios-1", :value => "Female"}
+              %input{:type => "radio", :name => "gender", :id => "genderfemale", :value => "Female"}
         
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}Occupation Category
             .col-md-4 
-              %select{:id => "selectbasic", :name => "selectbasic", :class => "form-control"}
+              %select{:id => "selectbasic", :name => "occupation", :class => "form-control"}
                 %option{:value => "risk0"}Low risk occupation
                 %option{:value => "risk1"}Medium risk occupation
                 %option{:value => "risk2"}High risk occupation
                 %option{:value => "risk3"}Very high risk occupation
+				
+          .form-group
+            %label{:class => "col-md-4 control-label", :for => "selectbasic"}State
+            .col-md-4 
+              %select{:id => "selectbasic", :name => "state", :class => "form-control"}
+                %option{:value => "nsw"}New South Wales
+                %option{:value => "vic"}Victoria
+                %option{:value => "wa"}Western Australia
+                %option{:value => "sa"}South Australia
+                %option{:value => "tas"}Tasmania
+                %option{:value => "qld"}Queensland
         
           .form-group
             .col-md-4
             .col-md-4
-              %button{:id => "singlebutton", :type => "submit", :name => "singlebutton", :class => "btn btn-primary btn-lg btn-block"}Get Quote
+              %button{:id => "singlebutton", :type => "submit", :name => "submit", :class => "btn btn-primary btn-lg btn-block"}Get Quote
