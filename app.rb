@@ -7,10 +7,6 @@ get '/' do
   haml :index
 end
 
-get '/test' do
-  erb :test
-end
-
 post '/quote' do
   haml :quote
 end

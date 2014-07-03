@@ -2,7 +2,16 @@
   #premiumbox{:style => "margin-top:50px;", :class => "mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}                    
     .panel.panel-info
       .panel-heading
-        %h3{:class => "panel-title"}Syeney Testers Life Insurance
+        %h3{:class => "panel-title"}Sydney Testers Life Insurance
       .panel-body{:style => "padding-top:30px"}
-        %h5 $100.01
+        %form{:id => "premiumform", :class => "form-horizontal", :role => "form"}
+		
+          %fieldset
+		  
+          .form-group{:style => "margin-bottom: 25px"}
+            %label{:class => "col-md-8 col-md-offset-2"}Your details:  
+			
+      .panel-footer.clearfix
+        .pull-right
+          %h3{:class => "panel-title"}Your Premium is: $100 per month
     	

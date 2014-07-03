@@ -2,7 +2,7 @@
   #quotebox{:style => "margin-top:50px;", :class => "mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}                    
     .panel.panel-info
       .panel-heading
-        %h3{:class => "panel-title"}Syeney Testers Life Insurance
+        %h3{:class => "panel-title"}Sydney Testers Life Insurance
       .panel-body{:style => "padding-top:30px"}
     	
         %form{:id => "quoteform", :class => "form-horizontal", :role => "form", :action => "/quote", :method => "post", "data-bv-feedbackicons-valid" => "glyphicon glyphicon-ok", "data-bv-feedbackicons-invalid" => "glyphicon glyphicon-remove", "data-bv-feedbackicons-validating" => "glyphicon glyphicon-refresh", "data-bv-submitbuttons" => 'button[type="submit"]', "data-bv-live" => "enabled"}
@@ -13,6 +13,11 @@
             %label{:class => "col-md-4 control-label", :for => "textinput"}Age  
             .col-md-4
               %input{:id => "age", :name => "age", :type => "number", :placeholder => "Enter your age", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The age is required", "data-bv-integer-message" => "The age has to be a number bigger than zero"}
+			  
+          .form-group{:style => "margin-bottom: 25px"}
+            %label{:class => "col-md-4 control-label", :for => "textinput"}Email  
+            .col-md-4
+              %input{:id => "email", :name => "email", :type => "text", :placeholder => "Enter your email address", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The email is required"}
         
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "radios"}Gender
