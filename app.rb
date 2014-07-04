@@ -8,6 +8,11 @@ get '/' do
 end
 
 post '/quote' do
+  @age = params["age"]
+  @email = params["email"]
+  @occupation = params["occupation"]
+  @gender = params["gender"]
+  @state = params["state"]
   haml :quote
 end
 
