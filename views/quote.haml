@@ -1,5 +1,5 @@
 .container
-  #premiumbox{:style => "margin-top:50px;", :class => "mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}                    
+  #premiumbox{:style => "margin-top:50px;", :class => "mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"}                    
     .panel.panel-info
       .panel-heading
         %h3{:class => "panel-title"}Sydney Testers Life Insurance
@@ -9,15 +9,13 @@
           %fieldset
 		  
           .form-group{:style => "margin-bottom: 25px"}
-            %label{:class => "col-md-8 col-md-offset-2"}Your details:
-            %table
-              %tbody
-                %tr
-                  %td Age:
-                  %td 18
-                %tr
-                  %td Email:
-                  %td a@b.c
+            %dl.dl-horizontal
+              %dt Your age
+              %dd 18
+              %dt Occupation class
+              %dd Risky job
+              %dt State
+              %dd NSW
       .panel-footer.clearfix
         .pull-right
           %h3{:class => "panel-title"}Your Premium is: $100 per month

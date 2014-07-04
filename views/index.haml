@@ -1,5 +1,5 @@
 .container
-  #quotebox{:style => "margin-top:50px;", :class => "mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}                    
+  #quotebox{:style => "margin-top:50px;", :class => "mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"}                    
     .panel.panel-info
       .panel-heading
         %h3{:class => "panel-title"}Sydney Testers Life Insurance
@@ -11,17 +11,17 @@
 		  
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "textinput"}Age  
-            .col-md-4
+            .col-md-6
               %input{:id => "age", :name => "age", :type => "number", :placeholder => "Enter your age", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The age is required", "data-bv-integer-message" => "The age has to be a number bigger than zero"}
 			  
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "textinput"}Email  
-            .col-md-4
+            .col-md-6
               %input{:id => "email", :name => "email", :type => "text", :placeholder => "Enter your email address", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The email is required"}
         
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "radios"}Gender
-            .col-md-4 
+            .col-md-6 
               %label{:class => "radio-inline", :for => "radios-0"}Male
               %input{:type => "radio", :name => "gender", :id => "gendermale", :value => "Male", :checked => "checked"}
               %label{:class => "radio-inline", :for => "radios-1"}Female
@@ -29,7 +29,7 @@
         
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}Occupation Category
-            .col-md-4 
+            .col-md-6 
               %select{:id => "selectbasic", :name => "occupation", :class => "form-control"}
                 %option{:value => "risk0"}Low risk occupation
                 %option{:value => "risk1"}Medium risk occupation
@@ -38,7 +38,7 @@
 				
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}State
-            .col-md-4 
+            .col-md-6 
               %select{:id => "selectbasic", :name => "state", :class => "form-control"}
                 %option{:value => "nsw"}New South Wales
                 %option{:value => "vic"}Victoria
@@ -49,5 +49,5 @@
         
           .form-group
             .col-md-4
-            .col-md-4
+            .col-md-6
               %button{:id => "singlebutton", :type => "submit", :id => "getquote", :name => "getquote", :class => "btn btn-primary btn-lg btn-block"}Get Quote
