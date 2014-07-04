@@ -11,16 +11,16 @@
           .form-group{:style => "margin-bottom: 25px"}
             %dl.dl-horizontal
               %dt Age
-              %dd== #{@age}
+              %dd== #{@quote.age}
               %dt Email
-              %dd== #{@email}
+              %dd== #{@quote.email}
               %dt Gender
-              %dd== #{@gender}
+              %dd== #{@quote.namedGender}
               %dt Occupation category
-              %dd== #{@occupation}
+              %dd== #{@quote.namedOccupationCategory}
               %dt State
-              %dd== #{@state}
+              %dd== #{@quote.namedState}
       .panel-footer.clearfix
         .pull-right
-          %h3{:class => "panel-title"}Your Premium is: $100 per month
+          %h3{:class => "panel-title"}== Monthly Premium: $#{@premium}
     	
