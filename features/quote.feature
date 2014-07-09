@@ -14,3 +14,22 @@ Feature: View Premium for Quote
       |  100 |  female  |  Queensland        | Low Risk         |  $230.8   |
       |  18  |  female  |  Western Australia | High Risk        |  $51.73   |
       |  37  |  male    |  South Australia   | Very High Risk   |  $103.79  |
+
+  @javascript
+  Scenario Outline: Email validation for invalid emails
+    Given I am on the SydneyTesters Home page '/'
+    When I enter an invalid email '<invalid_email_address>'
+    Then I should see an error message that the 'email is not valid'
+
+    Examples:
+      |  invalid_email_address |
+      |  hans@gmail            |
+      |  @gmail.com            |
+      |  hans                  |
+      |  hans.com              |
+      
+  @javascript
+  Scenario: Email validation for valid email
+    Given I am on the SydneyTesters Home page '/'
+    When I enter a valid email 'hans@gmail.com'
+    Then I should not see an error message that the 'email is not valid'
