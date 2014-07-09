@@ -1,14 +1,17 @@
 require 'sinatra'
 require 'haml'
 require 'v8'
+require 'json'
 require 'coffee-script'
 require 'quote'
 require 'premiumCalculator'
+require 'emailValidator'
 require 'logger'
 
 class App < Sinatra::Base
   
   logger = Logger.new(STDERR)
+  emailValidator = EmailValidator.new()
 
   configure do
     Dir.mkdir('log') unless File.exists?('log')
@@ -33,6 +36,13 @@ class App < Sinatra::Base
     calc = PremiumCalculator.new
     @premium = calc.getPremiumForQuote(@quote)
     haml :quote
+  end
+  
+  post '/checkemail' do
+    logger.info params
+    email = params["email"]
+    content_type :json
+    {:valid => emailValidator.isEmailValid?(email)}.to_json
   end
   
   get '/javascripts/application.js' do

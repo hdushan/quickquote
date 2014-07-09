@@ -148,6 +148,7 @@ DEPENDENCIES
   coffee-script
   cucumber
   haml
+  json
   nokogiri
   phantomjs
   poltergeist
