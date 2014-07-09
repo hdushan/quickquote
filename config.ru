@@ -1,3 +1,3 @@
 $: << './lib'
 require './app'
-run Sinatra::Application
+run App.new

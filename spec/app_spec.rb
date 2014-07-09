@@ -1,11 +1,11 @@
 require File.dirname(__FILE__) + '/spec_helper'
 set :environment, :test
  
-describe "QuickQuote Test" do
+describe "QuickQuote App" do
   include Rack::Test::Methods
  
   def app
-    @app ||= Sinatra::Application
+    @app ||= App.new
   end
  
   # Do a root test

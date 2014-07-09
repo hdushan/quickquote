@@ -23,23 +23,23 @@
             %label{:class => "col-md-4 control-label", :for => "radios"}Gender
             .col-md-6 
               %label{:class => "radio-inline", :for => "radios-0"}Male
-              %input{:type => "radio", :name => "gender", :id => "gendermale", :value => "male", :checked => "checked"}
+              %input{:type => "radio", :name => "gender", :id => "male", :value => "male", :checked => "checked"}
               %label{:class => "radio-inline", :for => "radios-1"}Female
-              %input{:type => "radio", :name => "gender", :id => "genderfemale", :value => "female"}
+              %input{:type => "radio", :name => "gender", :id => "female", :value => "female"}
         
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}Occupation Category
             .col-md-6 
-              %select{:id => "selectbasic", :name => "occupation", :class => "form-control"}
-                %option{:value => "risk0"}Low risk occupation
-                %option{:value => "risk1"}Medium risk occupation
-                %option{:value => "risk2"}High risk occupation
-                %option{:value => "risk3"}Very high risk occupation
+              %select{:id => "occupation", :name => "occupation", :class => "form-control"}
+                %option{:value => "risk0"}Low Risk
+                %option{:value => "risk1"}Medium Risk
+                %option{:value => "risk2"}High Risk
+                %option{:value => "risk3"}Very High Risk
 				
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}State
             .col-md-6 
-              %select{:id => "selectbasic", :name => "state", :class => "form-control"}
+              %select{:id => "state", :name => "state", :class => "form-control"}
                 %option{:value => "nsw"}New South Wales
                 %option{:value => "vic"}Victoria
                 %option{:value => "wa"}Western Australia
@@ -50,4 +50,4 @@
           .form-group
             .col-md-4
             .col-md-6
-              %button{:id => "singlebutton", :type => "submit", :id => "getquote", :name => "getquote", :class => "btn btn-primary btn-lg btn-block"}Get Quote
+              %button{:id => "getquote", :type => "submit", :name => "getquote", :class => "btn btn-primary btn-lg btn-block"}Get Quote

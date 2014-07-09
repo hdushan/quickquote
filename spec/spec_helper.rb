@@ -17,3 +17,7 @@ set :environment, :test
 set :run, false
 set :raise_errors, true
 set :logging, false
+
+def app
+  App.new
+end
