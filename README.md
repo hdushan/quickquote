@@ -21,17 +21,17 @@ Create a test web app, and host it on Heroku:
 URL for above webapp (work in progress): 
 http://rocky-brook-3953.herokuapp.com/
 
-Code for above webapp:
-git clone https://github.com/hdushan/quickquote.git
-bundle install
-rake #runs unit tests and cucumber tests headless
-rake unit #runs unit tests only
-rake chrome #runs cucumber tests using chrome ***
-rake headless #runs cucumber tests using phantomjs
+To set up the project on your machine:
+- git clone https://github.com/hdushan/quickquote.git
+- bundle install
+- rake #runs unit tests and cucumber tests headless
+- rake unit #runs unit tests only
+- rake chrome #runs cucumber tests using chrome*
+- rake headless #runs cucumber tests using phantomjs
 
-***Link to chromedriver (need this for selenium to be able to start chrome):
+*Link to chromedriver (need this for selenium to be able to start chrome):
 http://chromedriver.storage.googleapis.com/2.10/chromedriver_mac32.zip
-Copy the unzipped file into any folder in your PATH and then make it executable.
+- Copy the unzipped file into any folder in your PATH and then make it executable.
 
 Travis build for above webapp:
 https://travis-ci.org/
