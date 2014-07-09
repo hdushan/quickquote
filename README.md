@@ -35,13 +35,13 @@ http://chromedriver.storage.googleapis.com/2.10/chromedriver_mac32.zip
 
 Travis build for above webapp:
 https://travis-ci.org/
-(search for the public repository “quickquote”)
+- search for the public repository “quickquote”
 
 Plan for workshop:
 
-Step 1: Demonstrate the problem (ie time the tests as is)
-Step 2: Demonstrate how parallelisation improves it (ie time the tests after using selenium grid to distribute it across two machines)
-Step 3: Demonstrate how a headless browser improves it (ie time the test after changing it to use selenium/phantomjs instead of selenium/chrome)
-Step 4: Demonstrate how adhering to the Test pyramid improves it (ie time the test after moving some tests to the unit test layer)
+- Demonstrate the problem (ie time the tests as is)
+- Demonstrate how parallelisation improves it (ie time the tests after using selenium grid to distribute it across two machines)
+- Demonstrate how a headless browser improves it (ie time the test after changing it to use selenium/phantomjs instead of selenium/chrome)
+- Demonstrate how adhering to the Test pyramid improves it (ie time the test after moving some tests to the unit test layer)
 
 
