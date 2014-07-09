@@ -1,18 +1,28 @@
 require 'capybara/cucumber'
-require 'capybara/poltergeist'
 require 'phantomjs'
 require_relative '../../app'
 
-Capybara.register_driver :poltergeist do |app|
-  options = {
-          :js_errors => true,
-          :phantomjs_options => ['--load-images=no', '--disk-cache=false', '--local-storage-quota=0', '--max-disk-cache-size=0', '--local-storage-path=""'],
-      }
-  Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path, :timeout => 40)
+if ENV['CH'] == 'true' # in case you wanna run it with selenium
+  require 'selenium-webdriver'
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+else
+  require 'capybara/poltergeist'
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {
+      js_errors: true,
+      inspector: true,
+      phantomjs_options: ['--load-images=no', '--ignore-ssl-errors=yes'],
+      timeout: 120
+    })
+  end
+  Capybara.javascript_driver = :poltergeist
 end
 
+Capybara.current_driver = ENV['CH'] == 'true' ? :selenium : :poltergeist
 Capybara.app = App.new
 
-Capybara.javascript_driver = :poltergeist
+
 
   

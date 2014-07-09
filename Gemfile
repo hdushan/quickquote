@@ -16,7 +16,9 @@ gem "coffee-script"
 gem "therubyracer"
 gem "capybara"
 gem "cucumber"
-gem "poltergeist"
+gem "poltergeist", require: false
 gem "phantomjs"
 gem "nokogiri"
+gem "zip"
+gem "selenium-webdriver", require: false
 
