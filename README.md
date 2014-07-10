@@ -24,6 +24,8 @@ http://rocky-brook-3953.herokuapp.com/
 To set up the project on your machine:
 - git clone https://github.com/hdushan/quickquote.git
 - bundle install
+- rake parallel:create #Create your test databases. This is done by the following command. It creates as many databases as your PC has CPU cores.
+- rake parallel:prepare #Prepares your test databases with the db schema.
 - rake #runs unit tests and cucumber tests headless
 - rake unit #runs unit tests only
 - rake chrome #runs cucumber tests using chrome*
