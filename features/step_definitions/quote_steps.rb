@@ -12,6 +12,10 @@ When(/^I submit my '(\d+)', '(.*)', '(.*)' & '(.*)'$/) do | age, gender, state, 
   click_button 'Get Quote'
 end
 
+When(/^I submit my '(.*)' with incorrect values$/) do | age |
+  fill_in 'age', :with => age
+end
+
 Then(/^I should see the correct '(.*)' shown$/) do | premium |
   expect(page).to have_content(premium)
 end

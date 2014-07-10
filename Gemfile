@@ -22,4 +22,5 @@ gem "phantomjs"
 gem "nokogiri"
 gem "zip"
 gem "selenium-webdriver", require: false
+gem "parallel_tests", :group => :development
 
