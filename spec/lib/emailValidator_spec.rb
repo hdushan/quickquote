@@ -3,7 +3,7 @@ require 'emailValidator'
 
 describe EmailValidator do
 
-  emailValidator = EmailValidator.new()
+  let (:emailValidator) {EmailValidator.new()}
         
   describe '#isEmailValid?' do
     it 'should return false if there is no "@"' do
