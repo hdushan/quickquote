@@ -39,6 +39,9 @@ Travis build for above webapp:
 https://travis-ci.org/
 - search for the public repository “quickquote”
 
+Slides for workshop:
+https://trello.com/b/phvML2XB/fastertestsslides
+
 Plan for workshop:
 
 - Demonstrate the problem (ie time the tests as is)
