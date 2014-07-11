@@ -3,7 +3,7 @@ require 'cucumber/rake/task'
 
 RSpec::Core::RakeTask.new(:unit)
 
-#begin; require 'parallel_tests/tasks'; rescue LoadError; end
+begin; require 'parallel_tests/tasks'; rescue LoadError; end
 
 Cucumber::Rake::Task.new(:e2e) do |t|
   t.cucumber_opts = "features --tags ~@ignore --format pretty"
@@ -16,18 +16,17 @@ end
 
 task :chrome do
   ENV['CH'] = "true"
-  Rake::Task['e2e'].invoke
+  Rake::Task['parallel_all'].invoke
 end
 
 task :grid do
   ENV['REMOTE'] = "true"
-  ENV['CH'] = "false"
   Rake::Task['e2e'].invoke
 end
 
 task :headless do
   ENV['CH'] = "false"
-  Rake::Task['e2e'].invoke
+  Rake::Task['parallel_all'].invoke
 end
 
 task :default => [:unit, :e2e]
