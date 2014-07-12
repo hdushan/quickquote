@@ -16,6 +16,11 @@ end
 
 task :chrome do
   ENV['CH'] = "true"
+  Rake::Task['e2e'].invoke
+end
+
+task :chromeparallel do
+  ENV['CH'] = "true"
   Rake::Task['parallel_all'].invoke
 end
 
@@ -25,6 +30,11 @@ task :grid do
 end
 
 task :headless do
+  ENV['CH'] = "false"
+  Rake::Task['e2e'].invoke
+end
+
+task :headlessparallel do
   ENV['CH'] = "false"
   Rake::Task['parallel_all'].invoke
 end

@@ -10,23 +10,23 @@ require 'logger'
 
 class App < Sinatra::Base
   
-  logger = Logger.new(STDERR)
+  #logger = Logger.new(STDERR)
   emailValidator = EmailValidator.new()
 
-  configure do
-    Dir.mkdir('log') unless File.exists?('log')
-    enable :logging
-    log_file = File.new('log/access.log', 'a+')
-    log_file.sync = true
-    use Rack::CommonLogger, log_file
-  end
+  #configure do
+  #  Dir.mkdir('log') unless File.exists?('log')
+  #  enable :logging
+  #  log_file = File.new('log/access.log', 'a+')
+  #  log_file.sync = true
+  #  use Rack::CommonLogger, log_file
+  #end
 
   get '/' do
     haml :index
   end
   
   post '/quote' do
-    logger.info params
+    #logger.info params
     age = params["age"]
     email = params["email"]
     occupationCategory = params["occupation"]
@@ -39,7 +39,7 @@ class App < Sinatra::Base
   end
   
   post '/checkemail' do
-    logger.info params
+    #logger.info params
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json
