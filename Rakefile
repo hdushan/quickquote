@@ -44,7 +44,8 @@ task :qa do
   Rake::Task['e2e'].invoke
 end
 
-task :qaparallel do
+task :qagrid do
+  ENV['REMOTE'] = "true"
   ENV['TEST_ENV'] = "QA"
   Rake::Task['parallel_all'].invoke
 end
