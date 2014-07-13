@@ -39,5 +39,10 @@ task :headlessparallel do
   Rake::Task['parallel_all'].invoke
 end
 
+task :qa do
+  ENV['TEST_ENV'] = "QA"
+  Rake::Task['e2e'].invoke
+end
+
 task :default => [:unit, :e2e]
 

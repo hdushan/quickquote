@@ -11,25 +11,33 @@ private
   end
 end
 
-if ENV['CH'] == 'true'
+if ENV['TEST_ENV'] == 'QA'
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
-elsif ENV['REMOTE'] == 'true'
-  caps = Selenium::WebDriver::Remote::Capabilities.chrome
-  Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app,
-      :browser => :remote,
-      :url => "http://localhost:4444/wd/hub",
-      :desired_capabilities => caps)
-  end
+  Capybara.app_host = "http://rocky-brook-3953.herokuapp.com"
+  Capybara.default_driver  = :selenium
+  Capybara.run_server = false
 else
-  Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :phantomjs)
+  if ENV['CH'] == 'true'
+    Capybara.register_driver :selenium do |app|
+      Capybara::Selenium::Driver.new(app, :browser => :chrome)
+    end
+  elsif ENV['REMOTE'] == 'true'
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome
+    Capybara.register_driver :selenium do |app|
+      Capybara::Selenium::Driver.new(app,
+        :browser => :remote,
+        :url => "http://localhost:4444/wd/hub",
+        :desired_capabilities => caps)
+    end
+  else
+    Capybara.register_driver :selenium do |app|
+      Capybara::Selenium::Driver.new(app, :browser => :phantomjs)
+    end
   end
+  Capybara.app = App.new
 end
-
-Capybara.app = App.new
 
 
 
