@@ -1,0 +1,18 @@
+{
+  "capabilities":
+      [
+        {
+          "browserName": "chrome",
+          "maxInstances": 1,
+          "seleniumProtocol": "WebDriver",
+          "chrome_binary": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        },
+      ],
+  "configuration":
+  {
+    "maxSession": 1,
+    "register": true,
+    "hubPort": 4444,
+    "hubHost": hansrd
+  }
+}

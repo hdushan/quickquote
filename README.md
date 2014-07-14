@@ -35,6 +35,18 @@ To set up the project on your machine:
 http://chromedriver.storage.googleapis.com/2.10/chromedriver_mac32.zip
 - Copy the unzipped file into any folder in your PATH and then make it executable.
 
+Selenium Grid:
+- To start hub:
+java -jar selenium-server-standalone-2.42.2.jar -role hub
+
+- To start node (Chrome/OSX):
+java -jar selenium-server-standalone-2.42.2.jar -role node -browser browserName=chrome,maxInstances=1
+
+- To start node (Chrome/Win7):
+Y:\Workspace\quickquote\grid>java -jar selenium-server-standalone-2.42.2.jar -role node -nodeConfig win7chrome.json -Dwebdriver.chrome.driver=Y:\Workspace\quick
+quote\grid\chromedriver.exe
+
+
 Travis build for above webapp:
 https://travis-ci.org/
 - search for the public repository “quickquote”
