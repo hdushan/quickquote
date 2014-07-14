@@ -40,7 +40,7 @@ Selenium Grid:
 java -jar selenium-server-standalone-2.42.2.jar -role hub
 
 - To start node (Chrome/OSX):
-java -jar selenium-server-standalone-2.42.2.jar -role node -browser browserName=chrome,maxInstances=1
+java -jar selenium-server-standalone-2.42.2.jar -role node -nodeConfig osxchrome.json
 
 - To start node (Chrome/Win7):
 Y:\Workspace\quickquote\grid>java -jar selenium-server-standalone-2.42.2.jar -role node -nodeConfig win7chrome.json -Dwebdriver.chrome.driver=Y:\Workspace\quick
