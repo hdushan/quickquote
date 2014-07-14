@@ -37,13 +37,13 @@ http://chromedriver.storage.googleapis.com/2.10/chromedriver_mac32.zip
 
 Selenium Grid:
 - To start hub:
-java -jar selenium-server-standalone-2.42.2.jar -role hub
+java -jar selenium-server-standalone-2.42.2x.jar -role hub
 
 - To start node (Chrome/OSX):
-java -jar selenium-server-standalone-2.42.2.jar -role node -nodeConfig osxchrome.json
+java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig osxchrome.json
 
 - To start node (Chrome/Win7):
-Y:\Workspace\quickquote\grid>java -jar selenium-server-standalone-2.42.2.jar -role node -nodeConfig win7chrome.json -Dwebdriver.chrome.driver=Y:\Workspace\quick
+Y:\Workspace\quickquote\grid>java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig win7chrome.json -Dwebdriver.chrome.driver=Y:\Workspace\quick
 quote\grid\chromedriver.exe
 
 
