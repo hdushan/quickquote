@@ -14,33 +14,61 @@ task :parallel_all do
     Rake::Task['parallel:features'].invoke
 end
 
-task :chrome do
-  ENV['CH'] = "true"
+task :headless do
+  ENV['USE_HEADLESS_MODE'] = "true"
+  ENV['RUN_TESTS_PARALLELY'] = "false"
+  ENV['TEST_AGAINST_QA_ENV'] = "false"
   Rake::Task['e2e'].invoke
 end
 
-task :headless do
-  ENV['CH'] = "false"
+task :chrome do
+  ENV['USE_HEADLESS_MODE'] = "false"
+  ENV['RUN_TESTS_PARALLELY'] = "false"
+  ENV['TEST_AGAINST_QA_ENV'] = "false"
   Rake::Task['e2e'].invoke
 end
 
 task :headlessparallel do
-  ENV['CH'] = "false"
+  ENV['USE_HEADLESS_MODE'] = "true"
+  ENV['RUN_TESTS_PARALLELY'] = "true"
+  ENV['TEST_AGAINST_QA_ENV'] = "false"
   Rake::Task['parallel_all'].invoke
 end
 
-task :qa do
-  ENV['TEST_ENV'] = "QA"
+task :chromeparallel do
+  ENV['USE_HEADLESS_MODE'] = "false"
+  ENV['RUN_TESTS_PARALLELY'] = "true"
+  ENV['TEST_AGAINST_QA_ENV'] = "false"
+  Rake::Task['parallel_all'].invoke
+end
+
+task :qa_chrome do
+  ENV['USE_HEADLESS_MODE'] = "false"
+  ENV['RUN_TESTS_PARALLELY'] = "false"
+  ENV['TEST_AGAINST_QA_ENV'] = "true"
   Rake::Task['e2e'].invoke
 end
 
-task :qagrid do
-  ENV['REMOTE'] = "true"
-  ENV['TEST_ENV'] = "QA"
+task :qa_headless do
+  ENV['USE_HEADLESS_MODE'] = "true"
+  ENV['RUN_TESTS_PARALLELY'] = "false"
+  ENV['TEST_AGAINST_QA_ENV'] = "true"
+  Rake::Task['e2e'].invoke
+end
+
+task :qa_chromeparallel do
+  ENV['USE_HEADLESS_MODE'] = "false"
+  ENV['RUN_TESTS_PARALLELY'] = "true"
+  ENV['TEST_AGAINST_QA_ENV'] = "true"
   Rake::Task['parallel_all'].invoke
 end
 
-task :default => [:unit, :e2e]
+task :qa_headlessparallel do
+  ENV['USE_HEADLESS_MODE'] = "true"
+  ENV['RUN_TESTS_PARALLELY'] = "true"
+  ENV['TEST_AGAINST_QA_ENV'] = "true"
+  Rake::Task['parallel_all'].invoke
+end
 
-begin; require 'parallel_tests/tasks'; rescue LoadError; end
+task :default => [:unit, :headless]
 

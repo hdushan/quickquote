@@ -11,59 +11,32 @@ private
   end
 end
 
-HEROKU_URL = "http://rocky-brook-3953.herokuapp.com"
+if ENV['USE_HEADLESS_MODE'] == "true"
+  @browser = :phantomjs
+else
+  @browser = :chrome
+end 
 
-puts "ENV['TEST_ENV']" + " : " + ENV['TEST_ENV'].to_s
-puts "ENV['REMOTE']" + " : " + ENV['REMOTE'].to_s
-puts "ENV['CH']" + " : " + ENV['CH'].to_s
-
-def launchgrid
-  caps = Selenium::WebDriver::Remote::Capabilities.chrome
+if ENV['RUN_TESTS_PARALLELY'] == "true"
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app,
       :browser => :remote,
       :url => "http://localhost:4444/wd/hub",
-      :desired_capabilities => caps)
-    end  
-    if (ENV['TEST_ENV'] == 'QA')
-      Capybara.app_host = HEROKU_URL
-      Capybara.run_server = false
-    end
-    Capybara.default_driver  = :selenium
-end     
-  
-def launchchrome
-  Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
-  end
-  if (ENV['TEST_ENV'] == 'QA')
-    Capybara.app_host = HEROKU_URL
-    Capybara.run_server = false
-  end
-  Capybara.default_driver  = :selenium
-end
-  
-def launchheadless
-  Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :phantomjs)
-  end
-end      
-
-if ENV['TEST_ENV'] == 'QA'
-  if ENV['REMOTE'] == 'true'
-    launchgrid
-  else
-    launchchrome
+      :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.new({:browser_name=>@browser.to_s, :javascript_enabled=>true}))
   end
 else
-  if ENV['CH'] == 'true'
-    launchchrome
-  else
-    launchheadless
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => @browser)
   end
+end 
+
+Capybara.default_driver  = :selenium
+
+if ENV['TEST_AGAINST_QA_ENV'] == "true"
+  Capybara.configure do |config|
+    config.run_server = false
+    config.app_host   = "http://rocky-brook-3953.herokuapp.com"
+  end
+else
   Capybara.app = App.new
 end
-
-
-
-  

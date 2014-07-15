@@ -9,6 +9,7 @@
 /test/version_tmp/
 /tmp/
 /log/
+/grid/*.log
 
 ## Specific to RubyMotion:
 .dat*
