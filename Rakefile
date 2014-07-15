@@ -19,16 +19,6 @@ task :chrome do
   Rake::Task['e2e'].invoke
 end
 
-task :chromeparallel do
-  ENV['CH'] = "true"
-  Rake::Task['parallel_all'].invoke
-end
-
-task :grid do
-  ENV['REMOTE'] = "true"
-  Rake::Task['e2e'].invoke
-end
-
 task :headless do
   ENV['CH'] = "false"
   Rake::Task['e2e'].invoke
@@ -51,4 +41,6 @@ task :qagrid do
 end
 
 task :default => [:unit, :e2e]
+
+begin; require 'parallel_tests/tasks'; rescue LoadError; end
 
