@@ -12,7 +12,6 @@ private
 end
 
 HEROKU_URL = "http://rocky-brook-3953.herokuapp.com"
-LOCAL_URL = "http://127.0.0.1"
 
 puts "ENV['TEST_ENV']" + " : " + ENV['TEST_ENV'].to_s
 puts "ENV['REMOTE']" + " : " + ENV['REMOTE'].to_s
