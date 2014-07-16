@@ -35,7 +35,7 @@ Capybara.default_driver  = :selenium
 if ENV['TEST_AGAINST_QA_ENV'] == "true"
   Capybara.configure do |config|
     config.run_server = false
-    config.app_host   = "http://rocky-brook-3953.herokuapp.com"
+    config.app_host   = "http://sydneytesters.herokuapp.com"
   end
 else
   Capybara.app = App.new
