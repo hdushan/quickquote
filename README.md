@@ -19,7 +19,7 @@ Create a test web app, and host it on Heroku:
 - Have unit tests and cucumber tests as part of the webapp’s codebase
 
 URL for above webapp (work in progress): 
-http://rocky-brook-3953.herokuapp.com/
+http://sydneytesters.herokuapp.com/
 
 To set up the project on your machine:
 - git clone https://github.com/hdushan/quickquote.git
