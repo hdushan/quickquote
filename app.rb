@@ -22,11 +22,13 @@ class App < Sinatra::Base
   #end
 
   get '/' do
+    sleep 1
     haml :index
   end
   
   post '/quote' do
     #logger.info params
+    sleep 1
     age = params["age"]
     email = params["email"]
     occupationCategory = params["occupation"]
@@ -40,6 +42,7 @@ class App < Sinatra::Base
   
   post '/checkemail' do
     #logger.info params
+    sleep 1
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json
