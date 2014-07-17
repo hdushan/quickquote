@@ -37,6 +37,16 @@ class App < Sinatra::Base
     haml :car
   end
   
+  get '/payment' do
+    sleep 1
+    haml :payment
+  end
+  
+  post '/pay' do
+    sleep 1
+    haml :done
+  end
+  
   post '/quote' do
     #logger.info params
     sleep 1
