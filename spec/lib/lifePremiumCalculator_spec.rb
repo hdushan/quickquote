@@ -1,14 +1,14 @@
 require 'spec_helper'
-require 'premiumCalculator'
-require 'quote'
+require 'lifePremiumCalculator'
+require 'lifeQuote'
 
-describe PremiumCalculator do
+describe LifePremiumCalculator do
 
-  premiumCalculator = PremiumCalculator.new()
+  premiumCalculator = LifePremiumCalculator.new()
         
   describe '#getPremiumForQuote' do
     it 'should return right premium for a 23 year old, high risk male in NSW' do
-      quote = Quote.new(23, "email@gmail.com", "nsw", "risk2", "male")
+      quote = LifeQuote.new(23, "email@gmail.com", "nsw", "risk2", "male")
       expect(premiumCalculator.getPremiumForQuote(quote)).to eq 55.54
     end
   end

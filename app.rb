@@ -3,8 +3,10 @@ require 'haml'
 require 'v8'
 require 'json'
 require 'coffee-script'
-require 'quote'
-require 'premiumCalculator'
+require 'carQuote'
+require 'lifeQuote'
+require 'carPremiumCalculator'
+require 'lifePremiumCalculator'
 require 'emailValidator'
 require 'logger'
 
@@ -22,21 +24,28 @@ class App < Sinatra::Base
   #end
 
   get '/' do
-    sleep 1
     haml :index
+  end
+
+  get '/life' do
+    sleep 1
+    haml :life
+  end
+  
+  get '/car' do
+    sleep 1
+    haml :car
   end
   
   post '/quote' do
     #logger.info params
     sleep 1
-    age = params["age"]
-    email = params["email"]
-    occupationCategory = params["occupation"]
-    gender = params["gender"]
-    state = params["state"]
-    @quote=Quote.new(age, email, state, occupationCategory, gender)
-    calc = PremiumCalculator.new
-    @premium = calc.getPremiumForQuote(@quote)
+    @typeOfInsurance = params["typeOfInsurance"]
+    if @typeOfInsurance == "life"
+      getLifeQuote(params)
+    else
+      getCarQuote(params)
+    end
     haml :quote
   end
   
@@ -54,6 +63,29 @@ class App < Sinatra::Base
   
   not_found do
     haml :not_found
+  end
+  
+  def getLifeQuote(params)
+    age = params["age"]
+    email = params["email"]
+    occupationCategory = params["occupation"]
+    gender = params["gender"]
+    state = params["state"]
+    @quote=LifeQuote.new(age, email, state, occupationCategory, gender)
+    calc = LifePremiumCalculator.new
+    @premium = calc.getPremiumForQuote(@quote)
+  end
+  
+  def getCarQuote(params)
+    age = params["age"]
+    email = params["email"]
+    make = params["make"]
+    year = params["year"]
+    gender = params["gender"]
+    state = params["state"]
+    @quote=CarQuote.new(age, email, state, make, gender, year)
+    calc = CarPremiumCalculator.new
+    @premium = calc.getPremiumForQuote(@quote)
   end
 
 end

@@ -1,4 +1,4 @@
-class Quote
+class LifeQuote
   
   attr_reader :age, :email, :gender, :state, :occupationCategory
   

@@ -1,14 +1,16 @@
-Given(/^I am on the SydneyTesters Home page '(.*)'$/) do | url |
-  visit url
+Given(/^I am on the SydneyTesters Life Insurance page$/) do
+  visit "/"
+  expect(page).to have_content('Sydney Testers Insurance')
+  click_on "getlifequote"
   expect(page).to have_content('Sydney Testers Life Insurance')
 end
 
-When(/^I submit my '(\d+)', '(.*)', '(.*)' & '(.*)'$/) do | age, gender, state, occupation |
+When(/^I submit my  details '(\d+)', '(.*?)', '(.*?)' & '(.*?)' for a life insurance quote$/) do | age, gender, state, occupation |
   fill_in 'age', :with => age
-  fill_in 'email', :with => "test@gmail.com"
   choose(gender)
   select(occupation, :from => 'occupation')
   select(state, :from => 'state')
+  fill_in 'email', :with => "test@gmail.com"
   click_button 'Get Quote'
 end
 
