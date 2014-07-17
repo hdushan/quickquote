@@ -1,0 +1,20 @@
+.container-fluid
+  #quotebox{:style => "margin-top:30px;", :class => "mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"}                    
+    .panel.panel-info
+      .panel-heading
+        %h3{:class => "panel-title text-center"}Sydney Testers Insurance
+      .panel-body{:style => "padding-top:30px"}	
+        .container-fluid{:style => "margin-top: 25px;margin-bottom: 25px"}
+          .row
+            .col-md-6
+              .thumbnail.img-responsive
+                %img.img-rounded{:src => "images/car.jpeg", :style => "min-height:100px;height:100px"}
+                  .caption
+                    %h5{:class => "text-center"} Car Insurance
+                    %a.btn.btn-primary.btn-lg.btn-block{:href => "/car", :id => "getcarquote", :type => "submit", :name => "getcarquote"} Get Car Quote			
+            .col-md-6
+              .thumbnail.img-responsive
+                %%img.img-rounded{:src => "images/life.jpg", :style => "min-height:100px;height:100px;"}
+                  .caption
+                    %h5{:class => "text-center"} Life Insurance
+                    %a.btn.btn-primary.btn-lg.btn-block{:href => "/life", :id => "getlifequote", :type => "submit", :name => "getlifequote"} Get Life Quote 
