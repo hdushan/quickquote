@@ -33,29 +33,29 @@ class App < Sinatra::Base
   end
 
   get '/life' do
-    sleep 1
+    sleep 0.5
     haml :life
   end
   
   get '/car' do
-    sleep 1
+    sleep 0.5
     haml :car
   end
   
   get '/payment' do
-    sleep 1
+    sleep 0.5
     haml :payment
   end
   
   post '/pay' do
-    sleep 1
+    sleep 0.5
     @quote = session["quote"]
     haml :done
   end
   
   post '/quote' do
     #logger.info params
-    sleep 1
+    sleep 0.5
     type = params["typeOfInsurance"]
     if type == "life"
       @quote = getLifeQuote(params)
@@ -68,7 +68,7 @@ class App < Sinatra::Base
   
   post '/checkemail' do
     #logger.info params
-    sleep 1
+    sleep 0.5
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json

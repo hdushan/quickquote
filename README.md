@@ -3,29 +3,12 @@ quickquote
 
 An Insurance Quote app for the Sydney Testers "Faster Tests, Faster Feedback" workshop
 
-Tasks:
-
-Create a test web app, and host it on Heroku:
-- Insurance Quick Calc
-- Should do a calculation based on fields inputted in a form
-- One of the fields is an email address which has to be validated
-- Serverside hand-made validation for email address (not done yet)
-- Create a few unit tests:
-… 1x unit tests for different combinations of input
-… 1x unit tests for email validation
-- Create a few cucumber/webdriver tests:
-… 4x tests for different combinations of input
-… 4x tests for email validation (not done yet)
-- Have unit tests and cucumber tests as part of the webapp’s codebase
-
-URL for above webapp (work in progress): 
+URL for the webapp, hosted on heroku: 
 http://sydneytesters.herokuapp.com/
 
 To set up the project on your machine:
 - git clone https://github.com/hdushan/quickquote.git
 - bundle install
-- rake parallel:create #Create your test databases. This is done by the following command. It creates as many databases as your PC has CPU cores.
-- rake parallel:prepare #Prepares your test databases with the db schema.
 - rake #runs unit tests and cucumber tests headless
 - rake unit #runs unit tests only
 - rake chrome #runs cucumber tests using chrome*
@@ -35,14 +18,22 @@ To set up the project on your machine:
 http://chromedriver.storage.googleapis.com/2.10/chromedriver_mac32.zip
 - Copy the unzipped file into any folder in your PATH and then make it executable.
 
+To run the app locally:
+- In the quickquote folder, run 'shotgun'
+- Use a browser to navigate to 'http://localhost:9393'
+
+Other rake targets:
+- rake qa_chrome #runs cucumber tests using chrome*, against the heroku-hosted app
+- rake qa_headless #runs cucumber tests using phantomjs, against the heroku-hosted app
+
 Selenium Grid:
-- To start hub:
+- To start hub, from quickquote/grid:
 java -jar selenium-server-standalone-2.42.2x.jar -role hub
 
-- To start node (Chrome/OSX):
+- To start node (Chrome/OSX), from quickquote/grid:
 java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig osxchrome.json
 
-- To start node (Chrome/Win7):
+- To start node (Chrome/Win7), from quickquote\grid:
 Y:\Workspace\quickquote\grid>java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig win7chrome.json -Dwebdriver.chrome.driver=Y:\Workspace\quick
 quote\grid\chromedriver.exe
 

@@ -5,6 +5,8 @@ Feature: View Premium for Quote
     Given I am on the SydneyTesters Car Insurance page
     When I submit my  details '<age>', '<gender>', '<state>' & '<make>' for a car insurance quote
     Then I should see the correct '<premium>' shown
+    And when I purchase it with my credit card
+    Then I should see a 'Payment Sucessful' message
 
     Examples:
       |  age |  gender  |  state             | make             |  premium  |

@@ -33,3 +33,18 @@ end
 Then(/^I should not see an error message that the '(.*)'$/) do | error_message |
   expect(page).to_not have_content(error_message)
 end
+
+Then(/^when I purchase it with my credit card$/) do
+  click_on "payment"
+  expect(page).to have_content("Sydney Testers Insurance Payment")
+  fill_in 'cardholdername', :with => "Mr CardOwner"
+  fill_in 'cc', :with => "5520603021236550"
+  select("Nov (11)", :from => 'expiry-month')
+  select("2017", :from => 'expiry-year')
+  fill_in 'cvv', :with => "999"
+  click_button 'Pay Now'
+end
+
+Then(/^I should see a '(.*?)' message$/) do | success_message |
+  expect(page).to have_content(success_message)
+end
