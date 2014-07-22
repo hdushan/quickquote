@@ -22,8 +22,13 @@ class App < Sinatra::Base
   #  log_file.sync = true
   #  use Rack::CommonLogger, log_file
   #end
+  
+  use Rack::Session::Cookie, :key => 'rack.session',
+                               :path => '/',
+                               :secret => 'secret_stuff'
 
   get '/' do
+    session["quote"] ||= nil
     haml :index
   end
 
@@ -44,18 +49,20 @@ class App < Sinatra::Base
   
   post '/pay' do
     sleep 1
+    @quote = session["quote"]
     haml :done
   end
   
   post '/quote' do
     #logger.info params
     sleep 1
-    @typeOfInsurance = params["typeOfInsurance"]
-    if @typeOfInsurance == "life"
-      getLifeQuote(params)
+    type = params["typeOfInsurance"]
+    if type == "life"
+      @quote = getLifeQuote(params)
     else
-      getCarQuote(params)
+      @quote = getCarQuote(params)
     end
+    session["quote"] = @quote
     haml :quote
   end
   
@@ -81,9 +88,7 @@ class App < Sinatra::Base
     occupationCategory = params["occupation"]
     gender = params["gender"]
     state = params["state"]
-    @quote=LifeQuote.new(age, email, state, occupationCategory, gender)
-    calc = LifePremiumCalculator.new
-    @premium = calc.getPremiumForQuote(@quote)
+    LifeQuote.new(age, email, state, occupationCategory, gender)
   end
   
   def getCarQuote(params)
@@ -93,9 +98,7 @@ class App < Sinatra::Base
     year = params["year"]
     gender = params["gender"]
     state = params["state"]
-    @quote=CarQuote.new(age, email, state, make, gender, year)
-    calc = CarPremiumCalculator.new
-    @premium = calc.getPremiumForQuote(@quote)
+    CarQuote.new(age, email, state, make, gender, year)
   end
 
 end

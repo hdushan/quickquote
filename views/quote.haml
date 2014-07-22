@@ -16,7 +16,7 @@
               %dd== #{@quote.email}
               %dt Gender
               %dd== #{@quote.namedGender}
-              - if @typeOfInsurance=="life"
+              - if @quote.type=="life"
                 %dt Occupation category
                 %dd== #{@quote.namedOccupationCategory}
               - else
@@ -35,7 +35,7 @@
           .form-group
             %dl.dl-horizontal
               %dt{:class => "panel-title text-center"} Monthly Premium
-              %dd.mark== $#{@premium}
+              %dd.mark== $#{@quote.premium}
     	
           .form-group
             .col-md-4

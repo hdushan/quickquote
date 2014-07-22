@@ -9,7 +9,7 @@ class CarPremiumCalculator
   end
 
   def getPremiumForQuote(quote)
-    return @basePremium + @ageFactor*quote.age*@genderFactors[quote.gender]*@stateFactors[quote.state]*@makeFactors[quote.make]
+    ('%.2f'%(@basePremium + @ageFactor*quote.age*@genderFactors[quote.gender]*@stateFactors[quote.state]*@makeFactors[quote.make]))
   end
   
 end

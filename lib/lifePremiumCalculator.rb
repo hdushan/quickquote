@@ -9,7 +9,7 @@ class LifePremiumCalculator
   end
 
   def getPremiumForQuote(quote)
-    return @basePremium + @ageFactor*quote.age*@genderFactors[quote.gender]*@stateFactors[quote.state]*@occupationFactors[quote.occupationCategory]
+    ('%.2f'%(@basePremium + @ageFactor*quote.age*@genderFactors[quote.gender]*@stateFactors[quote.state]*@occupationFactors[quote.occupationCategory]))
   end
   
 end

@@ -1,9 +1,10 @@
-class CarQuote
+require 'quote'
+require 'carPremiumCalculator'
+
+class CarQuote < Quote
   
-  attr_reader :age, :email, :gender, :state, :make, :year
+  attr_reader :year, :make, :premium
   
-  @@states = {"nsw" => "New South Wales", "vic" => "Victoria", "tas" => "Tasmania", "wa" => "Western Australia", "sa" => "South Australia", "qld" => "Queensland"}
-  @@genders = {"male" => "Male", "female" => "Female"}
   @@makes = {"audi" => "Audi", "alfa" => "Alfa Romeo", "bmw" => "BMW", "lexus" => "Lexus", "toyota" => "Toyota", "vw" => "Volkswagen"}
     
   def initialize(age, email, state, make, gender, year)
@@ -13,18 +14,12 @@ class CarQuote
     @make = make
     @gender = gender
     @year = year
-  end
-  
-  def namedState
-    @@states[@state]
+    super("car", @age, @email, @state, @gender)
+    @premium = CarPremiumCalculator.new.getPremiumForQuote(self)
   end
   
   def namedMake
     @@makes[@make]
-  end
-  
-  def namedGender
-    @@genders[@gender]
   end
   
 end
