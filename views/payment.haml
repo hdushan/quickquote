@@ -21,9 +21,9 @@
 				
             .form-group
               %label.col-sm-3.control-label{:for => "expiry-month"} Expiration Date
-              .col-sm-9
+              .col-md-6
                 .row
-                  .col-sm-3
+                  .col-md-6
                     %select#expiry-month.form-control.col-sm-4{:name => "expiry-month"}
                       %option Month
                       %option{:value => "01"} Jan (01)
@@ -38,7 +38,7 @@
                       %option{:value => "10"} Oct (10)
                       %option{:value => "11"} Nov (11)
                       %option{:value => "12"} Dec (12)
-                  .col-sm-3
+                  .col-md-6
                     %select.form-control{:name => "expiry-year"}
                       %option{:value => "13"} 2013
                       %option{:value => "14"} 2014

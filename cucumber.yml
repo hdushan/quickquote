@@ -1,0 +1,2 @@
+default: --tags ~@ignore --format pretty
+# --out report<%= ENV['TEST_ENV_NUMBER'] %>.html
