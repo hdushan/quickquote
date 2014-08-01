@@ -1,6 +1,5 @@
 Feature: View Premium for Quote
-
-  @javascript
+  
   Scenario Outline: View correct premium for different combinations of age, gender, state etc
     Given I am on the SydneyTesters Car Insurance page
     When I submit my  details '<age>', '<gender>', '<state>' & '<make>' for a car insurance quote

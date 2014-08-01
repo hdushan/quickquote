@@ -1,6 +1,5 @@
 Feature: Validate age for generating quote
 
-  @javascript
   Scenario Outline: View validation error when incorrect values are entered for age
     Given I am on the SydneyTesters Life Insurance page
     When I submit my '<age>' with incorrect values 
@@ -14,8 +13,7 @@ Feature: Validate age for generating quote
       |  *a  |
       |  @g  |
       |  \\  |
-      
-  @javascript
+  
   Scenario Outline: Email validation for invalid emails
     Given I am on the SydneyTesters Life Insurance page
     When I enter an invalid email '<invalid_email_address>'
@@ -27,8 +25,7 @@ Feature: Validate age for generating quote
       |  @gmail.com            |
       |  hans                  |
       |  hans.com              |
-  
-  @javascript
+
   Scenario: Email validation for valid email
     Given I am on the SydneyTesters Life Insurance page
     When I enter a valid email 'hans@gmail.com'

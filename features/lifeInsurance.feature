@@ -1,6 +1,5 @@
 Feature: View Premium for Quote
 
-  @javascript
   Scenario Outline: View correct premium for different combinations of age, gender, state etc
     Given I am on the SydneyTesters Life Insurance page
     When I submit my  details '<age>', '<gender>', '<state>' & '<occupation>' for a life insurance quote
