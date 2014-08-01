@@ -1,0 +1,13 @@
+require 'capybara/cucumber'
+require 'selenium-webdriver'
+
+Capybara.register_driver :selenium do |app|
+  browser_required = Selenium::WebDriver::Remote::Capabilities.new({:browser_name=>"phantomjs", :javascript_enabled=>true})
+  Capybara::Selenium::Driver.new(app, :browser => :remote, :url => "http://localhost:4444/wd/hub", :desired_capabilities => browser_required)
+end
+
+Capybara.default_driver  = :selenium
+Capybara.configure do |config|
+  config.run_server = false
+  config.app_host   = "http://sydneytesters.herokuapp.com"
+end

@@ -1,0 +1,7 @@
+require 'cucumber/rake/task'
+
+Cucumber::Rake::Task.new(:cucumber)
+
+task :acceptance do
+  Rake::Task['cucumber'].invoke
+end

@@ -1,0 +1,8 @@
+require 'cucumber/rake/task'
+require 'parallel_tests/tasks'
+
+Cucumber::Rake::Task.new(:cucumber)
+
+task :acceptance do
+  Rake::Task['parallel:features'].invoke
+end

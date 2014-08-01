@@ -1,0 +1,13 @@
+require 'capybara/cucumber'
+require 'selenium-webdriver'
+require 'phantomjs'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :phantomjs)
+end
+
+Capybara.default_driver  = :selenium
+Capybara.configure do |config|
+  config.run_server = false
+  config.app_host   = "http://sydneytesters.herokuapp.com"
+end
