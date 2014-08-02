@@ -1,20 +1,20 @@
 quickquote
 ==========
 
-An Insurance Quote app for the Sydney Testers "Faster Tests, Faster Feedback" workshop
+An Insurance Quote app for the Sydney Testers "Faster Tests, Faster Feedback" workshop.
 
 ####URL for the webapp, hosted on heroku: 
 http://sydneytesters.herokuapp.com/
 
-####Things to have stup on your machine 
+####Things to have setup on your machine 
 (just google them to find installers):
+
 1. git
 2. ruby 2.0.x
 3. bundler gem
 4. chrome
 5. chromedriver (http://chromedriver.storage.googleapis.com/index.html?path=2.10/
-
- Unzip chromedriver, copy the unzipped file into any folder in your PATH and then make it executable.)
+Unzip chromedriver, copy the unzipped file into any folder in your PATH and then make it executable.)
 6. phantomjs
 
 ####To set up the project on your machine:
@@ -29,7 +29,8 @@ http://sydneytesters.herokuapp.com/
 
 ####To run the app locally:
 1. In the quickquote folder, run '`shotgun`'
-2. Use a browser to navigate to 'http://localhost:9393'
+2. Use a browser to navigate to 
+http://localhost:9393
 
 ####Rake targets to run tests against the heroku-hosted app:
 - `rake qa_chrome` *runs cucumber tests using chrome*
