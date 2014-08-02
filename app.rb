@@ -41,24 +41,24 @@ class App < Sinatra::Base
   end
   
   get '/car' do
-    sleep 0.5
+    #sleep 0.5
     haml :car
   end
   
   get '/payment' do
-    sleep 0.5
+    #sleep 0.5
     haml :payment
   end
   
   post '/pay' do
-    sleep 0.5
+    #sleep 0.5
     @quote = session["quote"]
     haml :done
   end
   
   post '/quote' do
     #logger.info params
-    sleep 0.5
+    #sleep 0.5
     type = params["typeOfInsurance"]
     if type == "life"
       @quote = getLifeQuote(params)

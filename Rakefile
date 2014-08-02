@@ -1,17 +1,11 @@
 require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
+require 'parallel_tests/tasks'
 
 RSpec::Core::RakeTask.new(:unit)
 
-begin; require 'parallel_tests/tasks'; rescue LoadError; end
-
 Cucumber::Rake::Task.new(:e2e) do |t|
   t.cucumber_opts = "features --tags ~@ignore --format pretty"
-end
-
-task :parallel_all do
-    RAILS_ENV = 'test'
-    Rake::Task['parallel:features'].invoke
 end
 
 task :headless do
@@ -32,14 +26,14 @@ task :headlessparallel do
   ENV['USE_HEADLESS_MODE'] = "true"
   ENV['RUN_TESTS_PARALLELY'] = "true"
   ENV['TEST_AGAINST_QA_ENV'] = "false"
-  Rake::Task['parallel_all'].invoke
+  Rake::Task['parallel:features'].invoke
 end
 
 task :chromeparallel do
   ENV['USE_HEADLESS_MODE'] = "false"
   ENV['RUN_TESTS_PARALLELY'] = "true"
   ENV['TEST_AGAINST_QA_ENV'] = "false"
-  Rake::Task['parallel_all'].invoke
+  Rake::Task['parallel:features'].invoke
 end
 
 task :qa_chrome do
@@ -60,14 +54,14 @@ task :qa_chromeparallel do
   ENV['USE_HEADLESS_MODE'] = "false"
   ENV['RUN_TESTS_PARALLELY'] = "true"
   ENV['TEST_AGAINST_QA_ENV'] = "true"
-  Rake::Task['parallel_all'].invoke
+  Rake::Task['parallel:features'].invoke
 end
 
 task :qa_headlessparallel do
   ENV['USE_HEADLESS_MODE'] = "true"
   ENV['RUN_TESTS_PARALLELY'] = "true"
   ENV['TEST_AGAINST_QA_ENV'] = "true"
-  Rake::Task['parallel_all'].invoke
+  Rake::Task['parallel:features'].invoke
 end
 
 task :default => [:unit, :headless]
