@@ -10,6 +10,8 @@ require 'lifePremiumCalculator'
 require 'emailValidator'
 require 'logger'
 
+use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
+
 class App < Sinatra::Base
   
   #logger = Logger.new(STDERR)
