@@ -8,6 +8,7 @@ require 'lifeQuote'
 require 'carPremiumCalculator'
 require 'lifePremiumCalculator'
 require 'emailValidator'
+require 'rack-google-analytics'
 require 'logger'
 
 use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
