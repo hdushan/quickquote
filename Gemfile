@@ -8,6 +8,7 @@ gem "haml"
 gem "slim"
 gem "shotgun"
 gem 'rack-google-analytics'
+gem 'newrelic_rpm'
 gem "json"
 gem "rspec"
 gem "rack-test"

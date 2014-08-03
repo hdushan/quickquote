@@ -8,6 +8,6 @@ end
 
 Capybara.default_driver  = :selenium
 Capybara.configure do |config|
-  config.run_server = false
-  config.app_host   = "http://sydneytesters.herokuapp.com"
+  Capybara.server_port = 9887 + ENV['TEST_ENV_NUMBER'].to_i
+  Capybara.app = App.new
 end

@@ -13,6 +13,10 @@ require 'logger'
 
 use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 class App < Sinatra::Base
   
   #logger = Logger.new(STDERR)
