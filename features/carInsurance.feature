@@ -11,7 +11,5 @@ Feature: View Premium for Quote
       |  age |  gender  |  state             | make             |  premium  |
       |  23  |  male    |  New South Wales   | BMW              |  $55.54   |
       |  70  |  female  |  Victoria          | Alfa Romeo       |  $137.51  |
-      |  75  |  male    |  Tasmania          | Lexus            |  $229.38  |
       |  100 |  female  |  Queensland        | Audi             |  $230.8   |
       |  18  |  female  |  Western Australia | BMW              |  $51.73   |
-      |  37  |  male    |  South Australia   | Lexus            |  $103.80  |

@@ -1,8 +1,8 @@
+require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
 require 'parallel_tests/tasks'
 
+RSpec::Core::RakeTask.new(:unit)
 Cucumber::Rake::Task.new(:cucumber)
 
-task :acceptance do
-  Rake::Task['parallel:features'].invoke
-end
+task :tests => [:unit, "parallel:tests"]

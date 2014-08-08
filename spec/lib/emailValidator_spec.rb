@@ -4,22 +4,31 @@ require 'emailValidator'
 describe EmailValidator do
 
   let (:emailValidator) {EmailValidator.new()}
-        
+
   describe '#isEmailValid?' do
-    it 'should return false if there is no "@"' do
-      expect(emailValidator.isEmailValid?("hans")).to be false
-    end
     
     it 'should return false if there is no "."' do
       expect(emailValidator.isEmailValid?("hans@gmail")).to be false
     end
     
-    it 'should return false if there is no domain name' do
-      expect(emailValidator.isEmailValid?("hans@gmail.")).to be false
-    end
-    
     it 'should return false if there is no username' do
       expect(emailValidator.isEmailValid?("@gmail.com")).to be false
+    end
+        
+    it 'should return false if there is no "@"' do
+      expect(emailValidator.isEmailValid?("hans.com")).to be false
+    end
+
+    it 'should return false if there is only one character "@"' do
+      expect(emailValidator.isEmailValid?("@")).to be false
+    end
+    
+    it 'should return false if there is no "@" or dot' do
+      expect(emailValidator.isEmailValid?("hans")).to be false
+    end
+    
+    it 'should return false if there is no domain name' do
+      expect(emailValidator.isEmailValid?("hans@gmail.")).to be false
     end
     
     it 'should return false if email is blank' do

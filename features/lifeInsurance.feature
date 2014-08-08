@@ -10,8 +10,6 @@ Feature: View Premium for Quote
     Examples:
       |  age |  gender  |  state             | occupation       |  premium  |
       |  23  |  male    |  New South Wales   | High Risk        |  $55.54   |
-      |  70  |  female  |  Victoria          | Medium Risk      |  $137.51  |
       |  75  |  male    |  Tasmania          | Very High Risk   |  $229.38  |
       |  100 |  female  |  Queensland        | Low Risk         |  $230.8   |
       |  18  |  female  |  Western Australia | High Risk        |  $51.73   |
-      |  37  |  male    |  South Australia   | Very High Risk   |  $103.80  |
