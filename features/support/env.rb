@@ -1,5 +1,4 @@
 require 'capybara/cucumber'
-require 'phantomjs'
 require_relative '../../app'
 require 'selenium-webdriver'
 

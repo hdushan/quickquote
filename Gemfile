@@ -19,10 +19,8 @@ gem "coffee-script"
 gem "therubyracer"
 gem "capybara"
 gem "cucumber"
-gem "poltergeist", require: false
-gem "phantomjs"
 gem "nokogiri"
 gem "zip"
-gem "selenium-webdriver", require: false
-gem "parallel_tests", :group => :development
+gem "selenium-webdriver"
+gem "parallel_tests"
 
