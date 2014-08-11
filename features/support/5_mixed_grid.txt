@@ -1,7 +1,6 @@
 require_relative '../../app'
 require 'capybara/cucumber'
 require 'selenium-webdriver'
-require 'phantomjs'
 
 Before('@chrome') do
   Capybara.register_driver :selenium do |app|

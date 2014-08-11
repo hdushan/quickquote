@@ -1,7 +1,6 @@
 require_relative '../../app'
 require 'capybara/cucumber'
 require 'selenium-webdriver'
-require 'phantomjs'
 
 Capybara.register_driver :selenium do |app|
   browser_required = Selenium::WebDriver::Remote::Capabilities.new({:browser_name=>"chrome", :javascript_enabled=>true})
