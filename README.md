@@ -14,9 +14,9 @@ http://sydneytesters.herokuapp.com/
 3. bundler gem
 4. chrome
 5. chromedriver* (http://chromedriver.storage.googleapis.com/index.html?path=2.10/
-Unzip chromedriver, copy the unzipped file into any folder in your PATH and then make it executable.)
+*Unzip chromedriver, copy the unzipped file into any folder in your PATH and then make it executable.*)
 6. phantomjs*
-Copy the file into any folder in your PATH and then make it executable.
+(*Copy the file into any folder in your PATH and then make it executable.*)
 
 \* Have included these executables in the "grid" folder 
 
