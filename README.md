@@ -13,9 +13,12 @@ http://sydneytesters.herokuapp.com/
 2. ruby 2.0.x
 3. bundler gem
 4. chrome
-5. chromedriver (http://chromedriver.storage.googleapis.com/index.html?path=2.10/
+5. chromedriver* (http://chromedriver.storage.googleapis.com/index.html?path=2.10/
 Unzip chromedriver, copy the unzipped file into any folder in your PATH and then make it executable.)
-6. phantomjs
+6. phantomjs*
+Copy the file into any folder in your PATH and then make it executable.
+
+\* Have included these executables in the "grid" folder 
 
 ####To set up the project on your machine:
 1. `git clone https://github.com/hdushan/quickquote.git`
@@ -43,7 +46,7 @@ In folder quickquote/grid:
 
 ######To start node (Chrome/OSX)
 In folder quickquote/grid:
-- `java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig osxchrome.json`
+- `java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig osxchrome.json -port 5556`
 
 ######To start node (Chrome/Win7)
 In folder quickquote\grid:
