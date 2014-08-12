@@ -50,6 +50,7 @@ In folder quickquote/grid:
 ######To start node (Chrome/OSX)
 In folder quickquote/grid:
 - `java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig osxchrome.json -port 5556`
+ps: change the "port" number as required for each node. Each node on the same machine needs a unique port number.
 
 ######To start node (Chrome/Win7)
 In folder quickquote\grid:
