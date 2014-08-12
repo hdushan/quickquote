@@ -56,7 +56,7 @@ In folder quickquote\grid:
 - `java -jar selenium-server-standalone-2.42.2x.jar -role node -nodeConfig win7chrome.json -Dwebdriver.chrome.driver=Y:\Workspace\quickquote\grid\chromedriver.exe`
 
 ####Rake targets to run tests parallely against heroku-hosted app 
-(NOTE: Please have at least 3 nodes running):
+(NOTE: Please have at least 3 nodes running, otherwise tests may time out intermittently):
 - `rake qa_chromeparallel` *runs cucumber tests parallely using chrome*
 - `rake qa_headlessparallel` *runs cucumber tests parallely using phantomjs*
 
