@@ -3,6 +3,7 @@
       [
         {
           "browserName": "phantomjs",
+		  "webdriver.phantomjs.driver": ".\grid\phantomjs.exe",
           "maxInstances": 1
         },
       ],

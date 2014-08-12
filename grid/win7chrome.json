@@ -3,6 +3,7 @@
       [
         {
           "browserName": "chrome",
+		  "webdriver.chrome.driver": ".\grid\chromedriver.exe",
           "maxInstances": 1
         },
       ],
