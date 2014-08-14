@@ -15,10 +15,13 @@ http://sydneytesters.herokuapp.com/
 4. chrome
 
 NOTE: The below three things can be downloaded for free from the internet, but you dont necessarily have to, as I have included the files in the "grid" folder.
+
 5. Selenium Server standalone library
 (*The latest version available appears to be 2.42.2. This version has a known issue with its http implementation. So, if you have no other compelling reason, try to use the version I provided in the "grid" folder, which has this issue fixed. This version is not released publicly yet*)
+
 6. chromedriver*
 (*If you do download this, copy it into any folder in your PATH and then make it executable.*)
+
 7. phantomjs*
 (*If you do download this, copy it into any folder in your PATH and then make it executable.*)
 
