@@ -11,6 +11,7 @@ require 'emailValidator'
 require 'rack-google-analytics'
 require 'logger'
 
+
 use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
 
 configure :production do
@@ -39,6 +40,11 @@ class App < Sinatra::Base
     haml :index
   end
 
+  get '/landing' do
+    session["quote"] ||= nil
+    haml :landing
+  end
+
   get '/life' do
     sleep 0.5
     haml :life
@@ -52,6 +58,10 @@ class App < Sinatra::Base
   get '/payment' do
     #sleep 0.5
     haml :payment
+  end
+
+  post '/landing' do
+    haml :landing
   end
   
   post '/pay' do
@@ -106,6 +116,11 @@ class App < Sinatra::Base
     gender = params["gender"]
     state = params["state"]
     CarQuote.new(age, email, state, make, gender, year)
+  end
+
+  def getLandingPage(params)
+    puts("Hello !!")
+    email = params["email"]
   end
 
 end

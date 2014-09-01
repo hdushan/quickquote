@@ -1,6 +1,6 @@
 # Gemfile
 source 'http://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
  
 gem 'tilt', '~> 1.4.1'
 gem "sinatra"
@@ -23,4 +23,5 @@ gem "nokogiri"
 gem "zip"
 gem "selenium-webdriver"
 gem "parallel_tests"
+gem "chromedriver-helper"
 

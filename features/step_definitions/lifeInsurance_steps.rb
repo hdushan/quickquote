@@ -1,5 +1,8 @@
 Given(/^I am on the SydneyTesters Life Insurance page$/) do
   visit "/"
+  fill_in 'email', :with => "test@gmail.com"
+  fill_in 'password', :with => "1234456"
+  click_button 'Login'
   expect(page).to have_content('Sydney Testers Insurance')
   click_on "getlifequote"
   expect(page).to have_content('Sydney Testers Life Insurance')

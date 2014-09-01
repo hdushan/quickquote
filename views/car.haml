@@ -4,11 +4,11 @@
       .panel-heading
         %h3{:class => "panel-title text-center"}Sydney Testers Car Insurance
       .panel-body{:style => "padding-top:30px"}
-    	
+
         %form{:id => "quoteform", :class => "form-horizontal", :role => "form", :action => "/quote", :method => "post", "data-bv-feedbackicons-valid" => "glyphicon glyphicon-ok", "data-bv-feedbackicons-invalid" => "glyphicon glyphicon-remove", "data-bv-feedbackicons-validating" => "glyphicon glyphicon-refresh", "data-bv-submitbuttons" => 'button[type="submit"]', "data-bv-live" => "enabled"}
-		
+
           %fieldset
-		  
+
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}Make
             .col-md-6 
@@ -19,7 +19,7 @@
                 %option{:value => "lexus"}Lexus
                 %option{:value => "toyota"}Toyota
                 %option{:value => "vw"}Volkswagen
-		  
+
           .form-group{:style => "margin-bottom: 25px"}
             %label{:class => "col-md-4 control-label", :for => "textinput"}Year  
             .col-md-6
@@ -37,7 +37,7 @@
               %input{:type => "radio", :name => "gender", :id => "male", :value => "male", :checked => "checked"}
               %label{:class => "radio-inline", :for => "radios-1"}Female
               %input{:type => "radio", :name => "gender", :id => "female", :value => "female"}
-				
+
           .form-group
             %label{:class => "col-md-4 control-label", :for => "selectbasic"}State
             .col-md-6 
@@ -53,9 +53,9 @@
             %label{:class => "col-md-4 control-label", :for => "textinput"}Email
             .col-md-6
               %input{:id => "email", :name => "email", :type => "text", :placeholder => "Enter your email address", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "The email is required"}
-			  
+
           %input{:type => "hidden", :name => "typeOfInsurance", :value => "car"}   
-		       
+
           .form-group
             .col-md-4
             .col-md-6
