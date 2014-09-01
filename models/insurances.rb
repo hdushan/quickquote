@@ -7,4 +7,5 @@ class Insurance
     property :createdtime,    DateTime, :required => true
     property :updatedtime,    DateTime, :required => true
     
+    belongs_to :user
 end

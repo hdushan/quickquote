@@ -6,4 +6,6 @@ class User
     property :password, String, :required => true, :length => 4..255
     property :role,     String, :required => true, :default => "USER"
     
+    has n, :insurances
+    
 end
