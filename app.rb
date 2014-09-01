@@ -11,6 +11,15 @@ require 'emailValidator'
 require 'rack-google-analytics'
 require 'logger'
 
+require 'data_mapper'
+DataMapper::Logger.new($stdout, :debug)
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/quickquote.db")
+
+require './models/insurances'
+require './models/users'
+DataMapper.finalize
+DataMapper.auto_migrate!
+
 use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
 
 configure :production do
@@ -37,6 +46,15 @@ class App < Sinatra::Base
   get '/' do
     session["quote"] ||= nil
     haml :index
+  end
+  
+  get '/test' do
+    User.all.inspect
+  end
+  
+  get '/seed' do
+    createUser("hans@hans.com", "hans", "ADMIN")
+    User.all.inspect.to_s
   end
 
   get '/life' do
@@ -107,5 +125,10 @@ class App < Sinatra::Base
     state = params["state"]
     CarQuote.new(age, email, state, make, gender, year)
   end
-
+  
+  def createUser(username, password, role)
+    if !User.get(username)
+      User.create(:role=>role, :username=>username, :password=>password)
+    end
+  end
 end
