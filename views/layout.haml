@@ -10,10 +10,23 @@
     %script(src="/javascripts/application.js")
     %script(src="js/bootstrapValidator.min.js")
   %body
-    #wrapper
-      #header
-        %img{:src => "images/sydneytesters.png", :style => "margin-top:30px;", :class => "mainbox col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2"}
-
-
-      #content
-        =yield
+    .container-fluid
+      .row
+        #wrapper
+          #header
+          .container-fluid
+            .row
+              %img{:src => "images/sydneytesters.png", :style => "margin-top:30px;", :class => "mainbox col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2"}
+        
+      .row  
+        #content
+        .container-fluid
+          .row
+            %form.form-inline{:role => "form", :class => "col-md-6 col-md-offset-6"}
+              .form-group.form-group-sm
+                %input#exampleInputEmail2.form-control{:placeholder => "Enter email", :type => "email"}
+              .form-group.form-group-sm
+                %input#exampleInputPassword2.form-control{:placeholder => "Password", :type => "password"}
+              %button.btn.btn-default{:type => "submit"} Sign in
+          .row
+            =yield
