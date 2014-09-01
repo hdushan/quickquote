@@ -1,6 +1,6 @@
 *.gem
 *.rbc
-db/*.db
+/db/*.db
 /.config
 /coverage/
 /InstalledFiles
@@ -36,4 +36,3 @@ build/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-db/quickquote.db
