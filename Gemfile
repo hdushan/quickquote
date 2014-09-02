@@ -6,7 +6,6 @@ gem 'tilt', '~> 1.4.1'
 gem "sinatra"
 gem "haml"
 gem "slim"
-gem "shotgun"
 gem 'rack-google-analytics'
 gem 'newrelic_rpm'
 gem "json"
@@ -23,5 +22,23 @@ gem "nokogiri"
 gem "zip"
 gem "selenium-webdriver"
 gem "parallel_tests"
+
 gem "chromedriver-helper"
+
+gem "activerecord"
+gem "sinatra-activerecord"
+gem 'data_mapper'
+
+group :development, :test do
+ gem "shotgun"
+ gem 'sqlite3'
+ gem "tux"
+ gem 'dm-sqlite-adapter'
+end
+
+group :production do
+ gem 'pg'
+ gem 'dm-postgres-adapter'
+end
+
 

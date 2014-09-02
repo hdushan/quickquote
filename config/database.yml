@@ -1,2 +1,0 @@
-test:
-  database: quickquote_test<%= ENV['TEST_ENV_NUMBER'] %>
