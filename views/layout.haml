@@ -17,16 +17,15 @@
           .container-fluid
             .row
               %img{:src => "images/sydneytesters.png", :style => "margin-top:30px;", :class => "mainbox col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2"}
-        
-      .row  
+      .row 
+        %ul.nav.nav-pills{:class => "col-xs-8 col-sm-8 col-md-8 col-xs-offset-8 col-sm-offset-8 col-md-offset-8"}
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Already an user? Login here
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+      .row 
         #content
         .container-fluid
-          .row
-            %form.form-inline{:role => "form", :class => "col-md-6 col-md-offset-6"}
-              .form-group.form-group-sm
-                %input#exampleInputEmail2.form-control{:placeholder => "Enter email", :type => "email"}
-              .form-group.form-group-sm
-                %input#exampleInputPassword2.form-control{:placeholder => "Password", :type => "password"}
-              %button.btn.btn-default{:type => "submit"} Sign in
           .row
             =yield
