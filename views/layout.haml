@@ -23,7 +23,14 @@
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               Already an user? Login here
               %span.caret
-            %ul.dropdown-menu{:role => "menu"}
+            .dropdown-menu{:style => "padding: 10px; background: #ddd"}
+              %form{:action => "", :role => "form"}
+                .form-group
+                  %label{:for => "user"} User
+                  %input#user.form-control{:placeholder => "User", :type => "text"}/
+                  %label{:for => "password"} Password
+                  %input#password.form-control{:placeholder => "Password", :type => "password"}/
+                %button.btn.btn-default{:type => "submit"} Sign in
       .row 
         #content
         .container-fluid
