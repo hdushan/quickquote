@@ -25,6 +25,7 @@ gem "parallel_tests"
 gem "activerecord"
 gem "sinatra-activerecord"
 gem 'data_mapper'
+gem "warden"
 
 group :development, :test do
  gem "shotgun"

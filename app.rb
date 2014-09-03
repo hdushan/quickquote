@@ -10,10 +10,12 @@ require 'lifePremiumCalculator'
 require 'emailValidator'
 require 'rack-google-analytics'
 require 'logger'
+require "warden"
 
 require 'data_mapper'
+require 'bcrypt'
 DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/quickquote.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/db.sqlite")
 
 require './models/insurances'
 require './models/users'
@@ -42,6 +44,38 @@ class App < Sinatra::Base
   use Rack::Session::Cookie, :key => 'rack.session',
                                :path => '/',
                                :secret => 'secret_stuff'
+  
+  use Warden::Manager do |config|
+    config.serialize_into_session{|user| user.id }
+    config.serialize_from_session{|id| User.get(id) }
+
+    config.scope_defaults :default,
+      strategies: [:password],
+      action: 'auth/unauthenticated'
+    config.failure_app = self
+  end
+
+  Warden::Manager.before_failure do |env,opts|
+    env['REQUEST_METHOD'] = 'POST'
+  end
+  
+  Warden::Strategies.add(:password) do
+    def valid?
+      params['user']['username'] && params['user']['password']
+    end
+
+    def authenticate!
+      user = User.first(username: params['user']['username'])
+
+      if user.nil?
+        fail!("The username you entered does not exist.")
+      elsif user.authenticate(params['user']['password'])
+        success!(user)
+      else
+        fail!("Could not log in")
+      end
+    end
+  end
 
   get '/' do
     session["quote"] ||= nil
@@ -55,6 +89,16 @@ class App < Sinatra::Base
   get '/seed' do
     createUser("hans@hans.com", "hans", "ADMIN")
     User.all.inspect.to_s
+  end
+  
+  get "/bad" do
+    content_type :json
+    { :login_successful => "false" }.to_json
+  end
+  
+  get "/good" do
+    content_type :json
+    { :login_successful => "true", :name => "Hans"}.to_json
   end
 
   get '/life' do
