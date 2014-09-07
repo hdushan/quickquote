@@ -88,7 +88,7 @@ class App < Sinatra::Base
   end
   
   get '/seed' do
-    createUser("hans@hans.com", "hans", "ADMIN")
+    createUser("hans@hans.com", "hans", "Hans", "ADMIN")
     User.all.inspect.to_s
   end
   
@@ -186,9 +186,9 @@ class App < Sinatra::Base
   end
 
   
-  def createUser(username, password, role)
+  def createUser(username, password, name, role)
     if !User.get(username)
-      User.create(:role=>role, :username=>username, :password=>password)
+      User.create(:role=>role, :username=>username, :password=>password, :name => name)
     end
   end
 end
