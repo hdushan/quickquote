@@ -8,7 +8,7 @@ class User
     property :name,     String
     property :role,     String,     :required => true, :default => "USER"
     
-    has n, :insurances
+    has n, :policies
     
     def authenticate(attempted_password)
       if self.password == attempted_password

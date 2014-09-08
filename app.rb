@@ -17,7 +17,7 @@ require 'bcrypt'
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/db.sqlite")
 
-require './models/insurances'
+require './models/policies'
 require './models/users'
 DataMapper.finalize
 DataMapper.auto_migrate!
@@ -83,13 +83,10 @@ class App < Sinatra::Base
     haml :index
   end
   
-  get '/test' do
-    User.all.inspect
-  end
-  
   get '/seed' do
     createUser("hans@hans.com", "hans", "Hans", "ADMIN")
-    User.all.inspect.to_s
+    createUser("hansrd@hans.com", "hans", "Hans RD", "ADMIN")
+    redirect '/users'
   end
   
   get "/bad" do
@@ -124,6 +121,16 @@ class App < Sinatra::Base
 
   post '/landing' do
     haml :landing
+  end
+  
+  get '/users' do
+    @users = User.all
+    haml :users
+  end
+  
+  get '/policies' do
+    @policies = Policy.all
+    haml :policies
   end
   
   post '/pay' do
@@ -187,7 +194,7 @@ class App < Sinatra::Base
 
   
   def createUser(username, password, name, role)
-    if !User.get(username)
+    if !User.get(:username => username)
       User.create(:role=>role, :username=>username, :password=>password, :name => name)
     end
   end
