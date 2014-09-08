@@ -41,6 +41,8 @@ Then(/^when I purchase it with my credit card$/) do
   click_on "payment"
   expect(page).to have_content("Sydney Testers Insurance Payment")
   fill_in 'cardholdername', :with => "Mr CardOwner"
+  fill_in 'username', :with => "card@owner.com"
+  fill_in 'password', :with => "password"
   fill_in 'cc', :with => "5520603021236550"
   select("Nov (11)", :from => 'expiry-month')
   select("2017", :from => 'expiry-year')

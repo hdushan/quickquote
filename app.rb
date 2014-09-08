@@ -110,12 +110,11 @@ class App < Sinatra::Base
   end
   
   get '/car' do
-    #sleep 0.5
     haml :car
   end
   
   get '/payment' do
-    #sleep 0.5
+    @quote = session["quote"]
     haml :payment
   end
 
@@ -134,14 +133,14 @@ class App < Sinatra::Base
   end
   
   post '/pay' do
-    #sleep 0.5
     @quote = session["quote"]
+    createUser(params["username"], params["password"], params["name"], "USER")
+    # Create insurance policy in DB
     haml :done
   end
   
   post '/quote' do
     #logger.info params
-    #sleep 0.5
     type = params["typeOfInsurance"]
     if type == "life"
       @quote = getLifeQuote(params)
@@ -154,7 +153,6 @@ class App < Sinatra::Base
   
   post '/checkemail' do
     #logger.info params
-    sleep 0.5
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json
@@ -187,15 +185,14 @@ class App < Sinatra::Base
     CarQuote.new(age, email, state, make, gender, year)
   end
 
-
-  def getLandingPage(params)
-    email = params["email"]
-  end
-
-  
   def createUser(username, password, name, role)
     if !User.get(:username => username)
       User.create(:role=>role, :username=>username, :password=>password, :name => name)
     end
   end
+  
+  def createPolicy(quote, user)
+    # Create Policy in DB
+  end
+  
 end

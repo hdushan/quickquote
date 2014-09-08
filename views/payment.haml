@@ -8,11 +8,21 @@
         %form{:id => "ccForm", :class => "form-horizontal", :role => "form", :action => "/pay", :method => "post", "data-bv-feedbackicons-valid" => "glyphicon glyphicon-ok", "data-bv-feedbackicons-invalid" => "glyphicon glyphicon-remove", "data-bv-feedbackicons-validating" => "glyphicon glyphicon-refresh", "data-bv-submitbuttons" => 'button[type="submit"]', "data-bv-live" => "enabled"}
 		
           %fieldset
-		  
+
             .form-group
               %label.col-sm-3.control-label{:for => "card-holder-name"} Name on Card
               .col-sm-9
                 %input#cardholdername.form-control{:name => "cardholdername", :placeholder => "Card Holder's Name", :type => "text"}
+				
+            .form-group
+              %label.col-sm-3.control-label{:for => "username"} Email/Username
+              .col-sm-9
+                %input#username.form-control{:name => "username", :placeholder => "This will be your login for the website", :type => "text"}
+						  
+            .form-group
+              %label.col-sm-3.control-label{:for => "password"} Password
+              .col-sm-9
+                %input#password.form-control{:name => "password", :placeholder => "Password", :type => "text"}
 				
             .form-group
               %label.col-sm-3.control-label{:for => "card-number"} Card Number
