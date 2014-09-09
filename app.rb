@@ -31,7 +31,7 @@ end
 
 class App < Sinatra::Base
   
-  #logger = Logger.new(STDERR)
+  logger = Logger.new(STDERR)
   emailValidator = EmailValidator.new()
 
   #configure do
@@ -133,8 +133,9 @@ class App < Sinatra::Base
   end
   
   post '/pay' do
+    #logger.info params
     @quote = session["quote"]
-    createUser(params["username"], params["password"], params["name"], "USER")
+    createUser(params["username"], params["password"], params["cardholdername"], "USER")
     # Create insurance policy in DB
     haml :done
   end
