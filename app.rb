@@ -22,7 +22,7 @@ DataMapper::Model.raise_on_save_failure = true
 require './models/policies'
 require './models/users'
 DataMapper.finalize
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
 
