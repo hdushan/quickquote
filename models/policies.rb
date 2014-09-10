@@ -1,12 +1,11 @@
 class Policy
     include DataMapper::Resource
     
-    property :policynum,      Serial
-    property :type,     String,   :required => true
-    property :userid,         String,   :required => true,  :format => :email_address
-    property :quote,          Text,     :required => true
-    property :createdtime,    DateTime, :required => true
-    property :updatedtime,    DateTime, :required => true
+    property :policynum,      Serial,   :key => true
+    property :type,           Enum[:car, :life],   :required => true
+    property :quote,          Object,   :required => true
+    property :created_at,     DateTime, :required => true,  :default => Time.now
+    property :updated_at,     DateTime, :required => true,  :default => Time.now
     
     belongs_to :user
 end

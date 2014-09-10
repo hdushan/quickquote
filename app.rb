@@ -13,15 +13,16 @@ require 'logger'
 require "warden"
 
 require 'data_mapper'
+require "dm_noisy_failures"
 require 'bcrypt'
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/db.sqlite")
+DataMapper::Model.raise_on_save_failure = true
 
 require './models/policies'
 require './models/users'
 DataMapper.finalize
 DataMapper.auto_migrate!
-
 
 use Rack::GoogleAnalytics, :tracker => 'UA-53462613-1'
 
@@ -31,7 +32,7 @@ end
 
 class App < Sinatra::Base
   
-  logger = Logger.new(STDERR)
+  $logger = Logger.new(STDERR)
   emailValidator = EmailValidator.new()
 
   #configure do
@@ -84,8 +85,10 @@ class App < Sinatra::Base
   end
   
   get '/seed' do
-    createUser("hans@hans.com", "hans", "Hans", "ADMIN")
-    createUser("hansrd@hans.com", "hans", "Hans RD", "ADMIN")
+    username = "hans2@hans.com"
+    createUser(username, "hans", "Hans", :admin)
+    carQuote = getCarQuote({"age" => "23", "email" => username, "make" => "bmw", "year" => "2009", "gender" => "male", "state" => "nsw"})
+    createPolicy(:car, username, carQuote)
     redirect '/users'
   end
   
@@ -105,7 +108,6 @@ class App < Sinatra::Base
   end
 
   get '/life' do
-    sleep 0.5
     haml :life
   end
   
@@ -133,15 +135,15 @@ class App < Sinatra::Base
   end
   
   post '/pay' do
-    #logger.info params
+    #@logger.info params
     @quote = session["quote"]
-    createUser(params["username"], params["password"], params["cardholdername"], "USER")
-    # Create insurance policy in DB
+    createUser(params["username"], params["password"], params["cardholdername"], :user)
+    createPolicy(params["username"], @quote)    
     haml :done
   end
   
   post '/quote' do
-    #logger.info params
+    #@logger.info params
     type = params["typeOfInsurance"]
     if type == "life"
       @quote = getLifeQuote(params)
@@ -153,7 +155,7 @@ class App < Sinatra::Base
   end
   
   post '/checkemail' do
-    #logger.info params
+    #@logger.info params
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json
@@ -185,15 +187,21 @@ class App < Sinatra::Base
     state = params["state"]
     CarQuote.new(age, email, state, make, gender, year)
   end
+  
+  def createPolicy(username, quote)
+    user = User.get(username)
+    $logger.info "BEFORE: CREATING POLICY: " + Policy.all.count.to_s
+    policy = Policy.new(:user => user, :type=>quote.type, :quote=>quote, :created_at => Time.now, :updated_at => Time.now)
+    policy.save
+    $logger.info "AFTER: SIZE OF TABLE: " + Policy.all.count.to_s
+  end
 
   def createUser(username, password, name, role)
-    if !User.get(:username => username)
+    if User.get(username).nil?
+      $logger.info "BEFORE: CREATING USER"
       User.create(:role=>role, :username=>username, :password=>password, :name => name)
+      $logger.info "AFTER: SIZE OF TABLE: " + User.all.count.to_s
     end
-  end
-  
-  def createPolicy(quote, user)
-    # Create Policy in DB
   end
   
 end

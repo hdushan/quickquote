@@ -16,7 +16,7 @@
               %dd== #{@quote.email}
               %dt Gender
               %dd== #{@quote.namedGender}
-              - if @quote.type=="life"
+              - if @quote.type.to_s=="life"
                 %dt Occupation category
                 %dd== #{@quote.namedOccupationCategory}
               - else

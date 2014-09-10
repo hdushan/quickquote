@@ -13,7 +13,7 @@ class LifeQuote < Quote
     @state = state
     @occupationCategory = occupationCategory
     @gender = gender
-    super("life", @age, @email, @state, @gender)
+    super(:life, @age, @email, @state, @gender)
     @premium = LifePremiumCalculator.new.getPremiumForQuote(self)
   end
   

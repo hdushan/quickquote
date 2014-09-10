@@ -28,6 +28,7 @@ gem "chromedriver-helper"
 gem "activerecord"
 gem "sinatra-activerecord"
 gem 'data_mapper'
+gem "dm-noisy-failures"
 gem "warden"
 
 group :development, :test do

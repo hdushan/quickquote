@@ -14,7 +14,7 @@ class CarQuote < Quote
     @make = make
     @gender = gender
     @year = year
-    super("car", @age, @email, @state, @gender)
+    super(:car, @age, @email, @state, @gender)
     @premium = CarPremiumCalculator.new.getPremiumForQuote(self)
   end
   

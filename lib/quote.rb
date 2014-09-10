@@ -5,7 +5,7 @@ class Quote
   
   @@states = {"nsw" => "New South Wales", "vic" => "Victoria", "tas" => "Tasmania", "wa" => "Western Australia", "sa" => "South Australia", "qld" => "Queensland"}
   @@genders = {"male" => "Male", "female" => "Female"}
-  @@types = {"life" => "Life Insurance", "car" => "Car Insurance"}
+  @@types = {:life => "Life Insurance", :car => "Car Insurance"}
     
   def initialize(type, age, email, state, gender)
     @type = type
