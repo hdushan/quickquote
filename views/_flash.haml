@@ -1,5 +1,21 @@
 .my-div2
   - if flash[:success]
-    .flash-notice
-      .alert.alert-success
-        .flash== flash[:success]
+    .alert.alert-success
+      %a.close{"data-dismiss" => "alert"} ×
+      %strong SUCCESS:
+      = flash[:success]
+  - elsif flash[:danger]
+    .alert.alert-danger
+      %a.close{"data-dismiss" => "alert"} ×
+      %strong ERROR:
+      = flash[:danger]
+  - elsif flash[:info]
+    .alert.alert-info
+      %a.close{"data-dismiss" => "alert"} ×
+      %strong INFO:
+      = flash[:info]
+  - elsif flash[:warning]
+    .alert.alert-warning
+      %a.close{"data-dismiss" => "alert"} ×
+      %strong WARNING:
+      = flash[:warning]

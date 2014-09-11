@@ -83,7 +83,7 @@ class App < Sinatra::Base
 
   get '/' do
     session["quote"] ||= nil
-    flash.now[:success] = "TEST"
+    flash.now[:success] = "This is a message"
     haml :index
   end
   
