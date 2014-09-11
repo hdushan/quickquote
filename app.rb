@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'rack-flash'
 require 'haml'
 require 'v8'
 require 'json'
@@ -46,6 +47,7 @@ class App < Sinatra::Base
   use Rack::Session::Cookie, :key => 'rack.session',
                                :path => '/',
                                :secret => 'secret_stuff'
+  use Rack::Flash, :sweep => true
   
   use Warden::Manager do |config|
     config.serialize_into_session{|user| user.id }
@@ -81,6 +83,7 @@ class App < Sinatra::Base
 
   get '/' do
     session["quote"] ||= nil
+    flash.now[:success] = "TEST"
     haml :index
   end
   
@@ -102,9 +105,9 @@ class App < Sinatra::Base
     { :login_successful => "true", :name => "Hans"}.to_json
   end
 
-  get '/landing' do
+  get '/login' do
     session["quote"] ||= nil
-    haml :landing
+    haml :login
   end
 
   get '/life' do
@@ -120,8 +123,8 @@ class App < Sinatra::Base
     haml :payment
   end
 
-  post '/landing' do
-    haml :landing
+  post '/login' do
+    redirect "/"
   end
   
   get '/users' do
@@ -135,15 +138,15 @@ class App < Sinatra::Base
   end
   
   post '/pay' do
-    #@logger.info params
     @quote = session["quote"]
+    $logger.info @quote.inspect
+    $logger.info @quote.type.inspect
     createUser(params["username"], params["password"], params["cardholdername"], :user)
     createPolicy(params["username"], @quote)    
     haml :done
   end
   
   post '/quote' do
-    #@logger.info params
     type = params["typeOfInsurance"]
     if type == "life"
       @quote = getLifeQuote(params)
@@ -191,6 +194,8 @@ class App < Sinatra::Base
   def createPolicy(username, quote)
     user = User.get(username)
     $logger.info "BEFORE: CREATING POLICY: " + Policy.all.count.to_s
+    $logger.info quote.inspect
+    $logger.info quote.type.to_s
     policy = Policy.new(:user => user, :type=>quote.type, :quote=>quote, :created_at => Time.now, :updated_at => Time.now)
     policy.save
     $logger.info "AFTER: SIZE OF TABLE: " + Policy.all.count.to_s

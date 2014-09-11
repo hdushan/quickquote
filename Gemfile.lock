@@ -164,6 +164,8 @@ GEM
       json
       websocket (~> 1.0)
     rack (1.5.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-google-analytics (1.2.0)
       actionpack
       activesupport
@@ -272,6 +274,7 @@ DEPENDENCIES
   nokogiri
   parallel_tests
   pg
+  rack-flash3
   rack-google-analytics
   rack-test
   rake

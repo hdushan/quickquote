@@ -4,6 +4,7 @@ ruby '2.1.2'
  
 gem 'tilt', '~> 1.4.1'
 gem "sinatra"
+gem "rack-flash3"
 gem "haml"
 gem "slim"
 gem 'rack-google-analytics'

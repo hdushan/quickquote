@@ -32,7 +32,8 @@
                     %input#password.form-control{:placeholder => "Password", :type => "password"}
                   %button.btn.btn-default{:type => "submit"} Login
       .row 
-        #content
+        #content{:class => "mainbox col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2"}
+          != haml :"_flash"
         .container-fluid
           .row
             =yield
