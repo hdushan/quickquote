@@ -83,8 +83,12 @@ class App < Sinatra::Base
 
   get '/' do
     session["quote"] ||= nil
-    flash.now[:success] = "This is a message"
     haml :index
+  end
+  
+  get '/index' do
+    session["quote"] ||= nil
+    redirect "/", flash[:success] = "This is a test message"
   end
   
   get '/seed' do
@@ -124,7 +128,7 @@ class App < Sinatra::Base
   end
 
   post '/login' do
-    redirect "/"
+    redirect "/", flash[:warning] = "Login functionality not implemented yet"
   end
   
   get '/users' do
