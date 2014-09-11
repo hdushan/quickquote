@@ -50,12 +50,12 @@ class App < Sinatra::Base
   use Rack::Flash, :sweep => true
   
   use Warden::Manager do |config|
-    config.serialize_into_session{|user| user.id }
-    config.serialize_from_session{|id| User.get(id) }
+    config.serialize_into_session{|user| user.username }
+    config.serialize_from_session{|username| User.get(username) }
 
     config.scope_defaults :default,
       strategies: [:password],
-      action: 'auth/unauthenticated'
+      action: '/auth'
     config.failure_app = self
   end
 
@@ -65,18 +65,20 @@ class App < Sinatra::Base
   
   Warden::Strategies.add(:password) do
     def valid?
-      params['user']['username'] && params['user']['password']
+      $logger.info "WARDEN: Validating ..."
+      params['username'] && params['password']
     end
 
     def authenticate!
-      user = User.first(username: params['user']['username'])
-
+      $logger.info "WARDEN: Aunthenticating ..."
+      user = User.get(params['username'])
+      $logger.info user.inspect
       if user.nil?
         fail!("The username you entered does not exist.")
-      elsif user.authenticate(params['user']['password'])
+      elsif user.authenticate(params['password'])
         success!(user)
       else
-        fail!("Could not log in")
+        fail!("Incorrect Password")
       end
     end
   end
@@ -86,17 +88,12 @@ class App < Sinatra::Base
     haml :index
   end
   
-  get '/index' do
-    session["quote"] ||= nil
-    redirect "/", flash[:success] = "This is a test message"
-  end
-  
   get '/seed' do
-    username = "hans2@hans.com"
-    createUser(username, "hans", "Hans", :admin)
+    username = "admin@admin.com"
+    createUser(username, "admin", "Mr Admin", :admin)
     carQuote = getCarQuote({"age" => "23", "email" => username, "make" => "bmw", "year" => "2009", "gender" => "male", "state" => "nsw"})
     createPolicy(:car, username, carQuote)
-    redirect '/users'
+    redirect '/usersfree'
   end
   
   get "/bad" do
@@ -113,6 +110,29 @@ class App < Sinatra::Base
     session["quote"] ||= nil
     haml :login
   end
+  
+  post '/login' do
+    $logger.info params
+    warden_handler.authenticate!
+    if warden_handler.authenticated?
+      redirect session[:return_to], flash[:success] = "You have logged in successfully"
+    else
+      redirect '/login', flash[:danger] = "You must log in"
+    end
+  end
+  
+  post '/auth' do
+    session[:return_to] = env['warden.options'][:attempted_path]
+    puts env['warden.options'][:attempted_path]
+    redirect '/login', flash[:danger] = "You must log in"
+  end
+  
+  get '/logout' do
+    warden_handler.raw_session.inspect
+    warden_handler.logout
+    flash[:success] = "Successfully logged out"
+    redirect '/'
+  end
 
   get '/life' do
     haml :life
@@ -126,16 +146,18 @@ class App < Sinatra::Base
     @quote = session["quote"]
     haml :payment
   end
-
-  post '/login' do
-    redirect "/", flash[:warning] = "Login functionality not implemented yet"
-  end
   
   get '/users' do
+    warden_handler.authenticate!
     @users = User.all
     haml :users
   end
-  
+
+  get '/usersfree' do
+    @users = User.all
+    haml :users
+  end
+    
   get '/policies' do
     @policies = Policy.all
     haml :policies
@@ -162,7 +184,6 @@ class App < Sinatra::Base
   end
   
   post '/checkemail' do
-    #@logger.info params
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json
@@ -174,6 +195,18 @@ class App < Sinatra::Base
   
   not_found do
     haml :not_found
+  end
+  
+  def warden_handler
+    env['warden']
+  end
+  
+  def current_user
+    warden_handler.user
+  end
+  
+  def check_authentication
+    redirect '/login' unless warden_handler.authenticated?
   end
   
   def getLifeQuote(params)

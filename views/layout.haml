@@ -28,8 +28,8 @@
               .dropdown-menu{:style => "padding: 10px;"}
                 %form{:action => "/login", :method => "post", :role => "form"}
                   .form-group
-                    %input#user.form-control{:placeholder => "Email address", :type => "text"}
-                    %input#password.form-control{:placeholder => "Password", :type => "password"}
+                    %input#username.form-control{:name => "username", :type => "text", :placeholder => "Email address", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "Email required!"}
+                    %input#password.form-control{:name => "password", :type => "password", :placeholder => "Password", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "Password required!"}
                   %button.btn.btn-default{:type => "submit"} Login
       .row 
         #content{:class => "mainbox col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2"}
