@@ -70,7 +70,7 @@ class App < Sinatra::Base
     end
 
     def authenticate!
-      $logger.info "WARDEN: Aunthenticating ..."
+      $logger.info params
       user = User.get(params['username'])
       $logger.info user.inspect
       if user.nil?
@@ -115,21 +115,23 @@ class App < Sinatra::Base
     $logger.info params
     warden_handler.authenticate!
     if warden_handler.authenticated?
+      $logger.info session.inspect
       redirect session[:return_to], flash[:success] = "You have logged in successfully"
     else
-      redirect '/login', flash[:danger] = "You must log in"
+      redirect '/login', flash[:danger] = warden_handler.message
     end
   end
   
   post '/auth' do
     session[:return_to] = env['warden.options'][:attempted_path]
     puts env['warden.options'][:attempted_path]
-    redirect '/login', flash[:danger] = "You must log in"
+    redirect '/login', flash[:danger] = warden_handler.message
   end
   
   get '/logout' do
     warden_handler.raw_session.inspect
     warden_handler.logout
+    session.clear
     flash[:success] = "Successfully logged out"
     redirect '/'
   end

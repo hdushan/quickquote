@@ -1,0 +1,11 @@
+%button#dropdownMenu1.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+  Hi User
+  %span.caret
+%ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+  %li{:role => "presentation"}
+    %a{:href => "#", :role => "menuitem", :tabindex => "-1"} My Policies
+  %li{:role => "presentation"}
+    %a{:href => "#", :role => "menuitem", :tabindex => "-1"} All Users
+  %li.divider{:role => "presentation"}
+  %li{:role => "presentation"}
+    %a{:href => "#", :role => "menuitem", :tabindex => "-1"} Logout

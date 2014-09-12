@@ -22,15 +22,10 @@
         %ul.nav.nav-pills{:class => "col-xs-8 col-sm-8 col-md-8 col-xs-offset-8 col-sm-offset-8 col-md-offset-8"}
           %li
             .dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                Already an user? Login here
-                %span.caret
-              .dropdown-menu{:style => "padding: 10px;"}
-                %form{:action => "/login", :method => "post", :role => "form"}
-                  .form-group
-                    %input#username.form-control{:name => "username", :type => "text", :placeholder => "Email address", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "Email required!"}
-                    %input#password.form-control{:name => "password", :type => "password", :placeholder => "Password", :class => "form-control input-md", "data-bv-notempty" => "", "data-bv-notempty-message" => "Password required!"}
-                  %button.btn.btn-default{:type => "submit"} Login
+              - if !warden_handler.authenticated?
+                != haml :"_logindropdown"
+              - else
+                != haml :"_loggedindropdown"
       .row 
         #content{:class => "mainbox col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2"}
           != haml :"_flash"
