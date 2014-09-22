@@ -1,0 +1,13 @@
+DEPENDENCIES
+  sample
+    path: .
+    metadata: true
+
+GRAPH
+  build-essential (1.4.4)
+  mysql (4.0.20)
+    build-essential (~> 1.4)
+    openssl (~> 1.1)
+  openssl (1.1.0)
+  sample (0.1.0)
+    mysql (~> 4.0.0)
