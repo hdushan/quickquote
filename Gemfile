@@ -23,7 +23,6 @@ gem "nokogiri"
 gem "zip"
 gem "selenium-webdriver"
 gem "parallel_tests"
-gem "berkshelf"
 
 gem "chromedriver-helper"
 
