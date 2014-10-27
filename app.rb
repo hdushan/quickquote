@@ -92,7 +92,7 @@ class App < Sinatra::Base
     username = "admin@admin.com"
     createUser(username, "admin", "Mr Admin", :admin)
     carQuote = getCarQuote({"age" => "23", "email" => username, "make" => "bmw", "year" => "2009", "gender" => "male", "state" => "nsw"})
-    createPolicy(:car, username, carQuote)
+    createPolicy(username, carQuote)
     redirect '/usersfree'
   end
   
