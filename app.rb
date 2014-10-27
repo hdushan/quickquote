@@ -169,9 +169,13 @@ class App < Sinatra::Base
     @quote = session["quote"]
     $logger.info @quote.inspect
     $logger.info @quote.type.inspect
-    createUser(params["username"], params["password"], params["cardholdername"], :user)
-    createPolicy(params["username"], @quote)    
-    haml :done
+    if @quote.premium.to_f > 50
+      createUser(params["username"], params["password"], params["cardholdername"], :user)
+      createPolicy(params["username"], @quote)    
+      haml :done
+    else
+      haml :not_done
+    end
   end
   
   post '/quote' do
@@ -186,6 +190,12 @@ class App < Sinatra::Base
   end
   
   post '/checkemail' do
+    email = params["email"]
+    content_type :json
+    {:valid => emailValidator.isEmailValid?(email)}.to_json
+  end
+  
+  get '/checkemail' do
     email = params["email"]
     content_type :json
     {:valid => emailValidator.isEmailValid?(email)}.to_json
