@@ -22,6 +22,11 @@ else
 end 
 
 Capybara.default_driver  = :selenium
+Capybara.current_driver  = :selenium
+Capybara.javascript_driver = :selenium
+Capybara.default_wait_time = 2
+
+#Capybara.save_and_open_page_path = File.expand_path(File.join(File.dirname(__FILE__), "../screenshots/"))
 
 if ENV['TEST_AGAINST_QA_ENV'] == "true"
   Capybara.configure do |config|
@@ -31,4 +36,28 @@ if ENV['TEST_AGAINST_QA_ENV'] == "true"
 else
   Capybara.server_port = 9887 + ENV['TEST_ENV_NUMBER'].to_i
   Capybara.app = App.new
+end
+
+Before do
+  Capybara.current_session.driver.browser.manage.window.resize_to(1920, 1080)
+  Capybara.page.driver.browser.manage.window.maximize
+end
+
+After  do |scenario|
+  if scenario.failed?
+    Capybara.page.driver.browser.manage.window.maximize
+    puts scenario.name
+    puts scenario.to_sexp
+
+    if scenario.outline?
+      puts "Scenatio Outline ...."
+    else
+      puts "Scenatio  ...."
+    end
+    puts "Screenshot saved(not yet)"
+    screenshot_name = "screenshot.png"
+    puts "Screenshot saving: #{screenshot_name}"
+    page.save_screenshot(screenshot_name, :full => true)
+    puts "Screenshot saved: #{screenshot_name}"
+  end
 end

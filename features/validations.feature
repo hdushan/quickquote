@@ -4,8 +4,8 @@ Feature: Field validations for Age and Email
 
   Scenario Outline: Invalid Age
     Given I am on the SydneyTesters Life Insurance page
-    When I submit my '<age>' with incorrect values 
-    Then I should see an error message that the 'The age is required'
+    When I submit my '<invalid_age>' with incorrect values
+    Then I should see an error message that the 'The age is required. Numeric, bigger than zero.'
 
     Examples:
       |  invalid_age  |

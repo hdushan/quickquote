@@ -36,3 +36,9 @@ build/
 .rvmrc
 
 *.sqlite
+.idea*
+.idea/quickquote.iml
+
+.idea/workspace.xml
+
+screenshot.png
