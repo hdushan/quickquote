@@ -1,5 +1,5 @@
 language: ruby
-rvm: 2.1.2
+rvm: 2.2.3
 before_install: 
   - sudo apt-get update -qq 
   - sudo apt-get install -qq postgresql-server-dev-9.3
