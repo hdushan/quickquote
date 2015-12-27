@@ -9,3 +9,7 @@ deploy:
   app: sydneytesters
   on:
     repo: hdushan/quickquote
+notifications:
+  email:
+    recipients:
+      - hansrd_98@yahoo.com
