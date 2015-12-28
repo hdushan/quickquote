@@ -1,15 +1,16 @@
 language: ruby
 rvm: 2.2.3
-before_install: 
-  - sudo apt-get update -qq 
-  - sudo apt-get install -qq postgresql-server-dev-9.3
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get install -qq postgresql-server-dev-9.3
 deploy:
   provider: heroku
-  api_key: 03dcc037-28f5-4a24-8eed-c0dacf815fe4
+  api_key:
+    secure: wDUOCwUrM4iQrL9v1rQ/0Fdb/cQvkpZVbJe77S6kPEfxliUtIeERDcP6m42uTCzIUC8DYY8W58y8t7ySLctT/0ywL8/BCHMoBgxcs2t1P5fsW6sEii17pBs3IA4qkCWwvJe4I1W/OIVNIxPUPSaiNf1rklXD/Jeig1yhMlWxRf4=
   app: sydneytesters
   on:
     repo: hdushan/quickquote
 notifications:
   email:
     recipients:
-      - hansrd_98@yahoo.com
+    - hansrd_98@yahoo.com
