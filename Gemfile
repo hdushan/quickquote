@@ -1,6 +1,6 @@
 # Gemfile
 source 'http://rubygems.org'
-ruby '2.2.3'
+ruby '2.7.7'
  
 gem 'tilt', '~> 1.4.1'
 gem "sinatra"
@@ -9,7 +9,7 @@ gem "haml"
 gem "slim"
 gem 'rack-google-analytics'
 gem 'newrelic_rpm'
-gem "json"
+gem "json", '~> 2.0.2'
 gem "rspec"
 gem "rack-test"
 gem "simplecov"
