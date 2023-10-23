@@ -27,7 +27,7 @@ gem "parallel_tests"
 gem "chromedriver-helper"
 
 gem "activerecord"
-gem "sinatra-activerecord"
+gem "sinatra-activerecord", ">= 2.0.27"
 gem 'data_mapper'
 gem "dm-noisy-failures"
 gem "warden"
