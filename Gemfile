@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby '2.7.7'
  
 gem 'tilt', '~> 1.4.1'
-gem "sinatra"
+gem "sinatra", ">= 4.0.0"
 gem "rack-flash3"
 gem "haml"
 gem "slim"
@@ -27,7 +27,7 @@ gem "parallel_tests"
 gem "chromedriver-helper"
 
 gem "activerecord"
-gem "sinatra-activerecord"
+gem "sinatra-activerecord", ">= 2.0.27"
 gem 'data_mapper'
 gem "dm-noisy-failures"
 gem "warden"
