@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby '2.7.7'
  
 gem 'tilt', '~> 1.4.1'
-gem "sinatra"
+gem "sinatra", ">= 2.0.0"
 gem "rack-flash3"
 gem "haml"
 gem "slim"
@@ -11,15 +11,15 @@ gem 'rack-google-analytics'
 gem 'newrelic_rpm'
 gem "json", '~> 2.0.2'
 gem "rspec"
-gem "rack-test"
+gem "rack-test", ">= 2.1.0"
 gem "simplecov"
-gem "travis"
+gem "travis", ">= 1.12.0"
 gem "rake"
 gem "coffee-script"
 gem "therubyracer"
-gem "capybara"
+gem "capybara", ">= 3.39.0"
 gem "cucumber"
-gem "nokogiri"
+gem "nokogiri", ">= 1.15.6"
 gem "zip"
 gem "selenium-webdriver"
 gem "parallel_tests"
@@ -27,10 +27,10 @@ gem "parallel_tests"
 gem "chromedriver-helper"
 
 gem "activerecord"
-gem "sinatra-activerecord"
+gem "sinatra-activerecord", ">= 2.0.27"
 gem 'data_mapper'
 gem "dm-noisy-failures"
-gem "warden"
+gem "warden", ">= 1.2.8"
 
 group :development, :test do
  gem "shotgun"
