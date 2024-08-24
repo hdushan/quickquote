@@ -21,7 +21,7 @@ gem "capybara"
 gem "cucumber"
 gem "nokogiri"
 gem "zip"
-gem "selenium-webdriver"
+gem "selenium-webdriver", ">= 4.8.0"
 gem "parallel_tests"
 
 gem "chromedriver-helper"
