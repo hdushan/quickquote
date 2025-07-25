@@ -5,7 +5,7 @@ ruby '2.7.7'
 gem 'tilt', '~> 1.4.1'
 gem "sinatra"
 gem "rack-flash3"
-gem "haml"
+gem "haml", ">= 6.1.0"
 gem "slim"
 gem 'rack-google-analytics'
 gem 'newrelic_rpm'
@@ -17,9 +17,9 @@ gem "travis"
 gem "rake"
 gem "coffee-script"
 gem "therubyracer"
-gem "capybara"
+gem "capybara", ">= 3.39.0"
 gem "cucumber"
-gem "nokogiri"
+gem "nokogiri", ">= 1.18.9"
 gem "zip"
 gem "selenium-webdriver"
 gem "parallel_tests"
