@@ -13,7 +13,7 @@ gem "json", '~> 2.0.2'
 gem "rspec"
 gem "rack-test"
 gem "simplecov"
-gem "travis"
+gem "travis", ">= 1.12.0"
 gem "rake"
 gem "coffee-script"
 gem "therubyracer"
